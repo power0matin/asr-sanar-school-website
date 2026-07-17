@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>هنرستان عصر صنعت</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- فونت داخلی -->
+  <link rel="preload" href="assets/fonts/vazirmatn/Vazirmatn[wght].woff2" as="font" type="font/woff2" crossorigin>
+
+  <meta name="description"
+    content="هنرستان عصر صنعت - آموزش رشته‌های فنی حرفه‌ای شامل شبکه و نرم افزار، حسابداری و برق الکترونیک">
+  <meta name="keywords" content="هنرستان, هنرستان فنی حرفه ای, شبکه و نرم افزار, حسابداری, برق">
+  <meta name="author" content="Asr Sanat School">
+  <meta property="og:title" content="هنرستان عصر صنعت">
+  <meta property="og:description" content="آموزش رشته‌های فنی حرفه‌ای در فردیس">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/cover.jpg">
+  <meta property="og:locale" content="fa_IR">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="canonical" href="https://example.com">
+
+  <meta name="theme-color" content="#4f46e5">
+
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "EducationalOrganization",
+ "name": "هنرستان عصر صنعت",
+ "url": "https://example.com",
+ "address": {
+   "@type": "PostalAddress",
+   "addressLocality": "فردیس",
+   "addressRegion": "البرز",
+   "addressCountry": "IR"
+ },
+ "telephone": "026000000",
+ "email": "info@school.ir"
+}
+</script>
+
+</head>
+
+
+<body>
+  <!-- Scroll Progress Bar -->
+  <div id="scrollProgress"></div>
+  <header class="header">
+
+    <div class="container nav">
+
+      <div class="logo">
+        هنرستان عصر صنعت
+      </div>
+
+      <nav id="navMenu" aria-label="منوی اصلی سایت">
+        <a href="#top">صفحه اصلی</a>
+        <a href="#about">درباره هنرستان</a>
+        <a href="#programs">رشته‌های آموزشی</a>
+        <a href="#features">امکانات</a>
+        <a href="#staff">کادر آموزشی</a>
+        <a href="#gallery">گالری تصاویر</a>
+        <a href="#news">اخبار</a>
+        <a href="#contact">تماس با ما</a>
+      </nav>
+
+
+      <div class="nav-actions">
+
+        <button id="themeToggle" class="theme-btn">🌙</button>
+
+        <button class="hamburger" id="menuToggle" aria-label="باز کردن منو" aria-controls="navMenu"
+          aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main>
+
+    <section id="top" class="hero">
+
+      <div class="hero-bg"></div>
+
+      <div class="container hero-wrapper">
+
+        <div class="hero-text">
+
+          <h1>
+            هنرستان <span>فنی غیردولتی پسرانه عصر صنعت</span>
+          </h1>
+
+          <p class="hero-desc">
+            هنرستان فنی غیردولتی پسرانه عصر صنعت فردیس با هدف آموزش مهارت‌های فنی و آماده‌سازی
+            دانش‌آموزان برای ورود به بازار کار و ادامه تحصیل در رشته‌های تخصصی فعالیت می‌کند.
+          </p>
+
+          <p class="hero-location">
+            📍 آدرس: فردیس، بین کانال و فلکه سوم، خیابان بیست و نهم جدید (نهم غربی قدیم)
+          </p>
+
+          <div class="hero-buttons">
+
+            <button class="primary-btn" onclick="scrollToSection('programs')">
+              مشاهده رشته‌ها
+            </button>
+
+            <a href="#contact" class="outline">
+              ثبت نام دانش‌آموز
+            </a>
+
+
+          </div>
+
+          <div class="hero-stats">
+
+            <div class="stat">
+              <h3>+300</h3>
+              <p>دانش‌آموز</p>
+            </div>
+
+            <div class="stat">
+              <h3>+25</h3>
+              <p>معلم</p>
+            </div>
+
+            <div class="stat">
+              <h3>3</h3>
+              <p>رشته تخصصی</p>
+            </div>
+
+          </div>
+          <div class="hero-badges">
+
+            <span>✅ دارای مجوز آموزش و پرورش</span>
+            <span>🏆 بیش از 10 سال سابقه آموزشی</span>
+            <span>🎓 قبولی دانش‌آموزان در دانشگاه‌های برتر</span>
+
+          </div>
+
+        </div>
+
+        <div class="hero-image">
+
+          <div class="hero-img-box">
+            <img src="honarestan-asr-sanaat.png" alt="هنرستان عصر صنعت">
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+
+    <section class="about container reveal" id="about">
+
+      <h2>درباره هنرستان</h2>
+
+      <div class="about-wrapper">
+
+        <div class="about-image">
+          <img src="assets/images/school.webp" loading="lazy" alt="هنرستان عصر صنعت">
+        </div>
+
+        <div class="about-grid">
+
+          <div class="about-card">
+            <h3>تاریخچه</h3>
+            <p>
+              مدرسه آینده سازان با هدف ارائه آموزش با کیفیت و تربیت نسل آینده تأسیس شده است.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <h3>اهداف آموزشی</h3>
+            <p>
+              پرورش خلاقیت، مهارت حل مسئله و آماده سازی دانش‌آموزان برای آینده.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <h3>ارزش‌های مدرسه</h3>
+            <p>
+              مسئولیت‌پذیری، احترام، همکاری و تلاش برای پیشرفت.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="programs container reveal" id="programs">
+
+      <h2>رشته‌های هنرستان</h2>
+
+      <div class="program-grid">
+
+        <!-- Network -->
+
+        <div class="card program-card">
+
+          <div class="icon">💻</div>
+
+          <h3>شبکه و نرم‌افزار</h3>
+
+          <p>
+            آموزش برنامه‌نویسی، شبکه‌های کامپیوتری، توسعه نرم‌افزار و مهارت‌های IT
+          </p>
+
+          <a href="programs/network.html" class="program-btn">
+            مشاهده جزئیات رشته
+          </a>
+
+        </div>
+
+
+        <!-- Accounting -->
+
+        <div class="card program-card">
+
+          <div class="icon">📊</div>
+
+          <h3>حسابداری</h3>
+
+          <p>
+            آموزش اصول حسابداری، مدیریت مالی و نرم‌افزارهای حسابداری
+          </p>
+
+          <a href="programs/accounting.html" class="program-btn">
+            مشاهده جزئیات رشته
+          </a>
+
+        </div>
+
+
+        <!-- Electrical -->
+
+        <div class="card program-card">
+
+          <div class="icon">⚡</div>
+
+          <h3>برق و الکترونیک</h3>
+
+          <p>
+            آموزش مدارهای الکترونیکی، سیستم‌های برق صنعتی و مهارت‌های فنی
+          </p>
+
+          <a href="programs/electronics.html" class="program-btn">
+            مشاهده جزئیات رشته
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="features container reveal" id="features">
+
+      <h2>امکانات هنرستان</h2>
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon">🧪</div>
+          <h3>کارگاه‌های تخصصی</h3>
+          <p>کارگاه‌های مجهز برای آموزش عملی رشته‌های فنی حرفه‌ای</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">💻</div>
+          <h3>آزمایشگاه کامپیوتر</h3>
+          <p>سیستم‌های مدرن برای آموزش برنامه‌نویسی و شبکه</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h3>کتابخانه آموزشی</h3>
+          <p>منابع علمی و کمک آموزشی برای دانش‌آموزان</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🏆</div>
+          <h3>فعالیت‌های علمی</h3>
+          <p>مسابقات علمی و پروژه‌های پژوهشی دانش‌آموزی</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="advantages container reveal">
+
+      <h2>چرا عصر صنعت؟</h2>
+
+      <div class="advantages-grid">
+
+        <div class="adv">
+          <h3>🎓 آموزش عملی</h3>
+          <p>بیش از 60٪ آموزش‌ها به صورت عملی در کارگاه‌ها انجام می‌شود.</p>
+        </div>
+
+        <div class="adv">
+          <h3>💼 آماده‌سازی برای بازار کار</h3>
+          <p>دانش‌آموزان مهارت‌های واقعی برای ورود به بازار کار یاد می‌گیرند.</p>
+        </div>
+
+        <div class="adv">
+          <h3>🏫 محیط آموزشی مدرن</h3>
+          <p>کارگاه‌ها و تجهیزات مطابق استانداردهای روز.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Staff Section -->
+    <section class="staff-gallery">
+      <div class="container">
+        <h2 class="section-title">کادر آموزشی و اساتید</h2>
+
+        <!-- Filter Buttons -->
+        <div class="filter-controls">
+          <button class="filter-btn active" data-filter="all">همه</button>
+          <button class="filter-btn" data-filter="engineering">مهندسی</button>
+          <button class="filter-btn" data-filter="arts">هنر و معماری</button>
+          <button class="filter-btn" data-filter="management">مدیریت</button>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="staff-grid" id="staffGrid">
+          <!-- Example Card 1 -->
+          <div class="staff-card" data-category="engineering">
+            <img src="assets\images\staff\1774353772892.jpg" alt="Matin Shahabadi" loading="lazy">
+            <div class="card-info">
+              <h3 style="font-size: 18px; color: var(--text);">مهندس متین شاه‌آبادی</h3>
+              <p style="font-size: 14px; color: var(--text-muted);">توسعه‌دهنده ارشد وب</p>
+            </div>
+          </div>
+          <!-- Example Card 2 -->
+          <div class="staff-card" data-category="arts">
+            <img src="assets\images\staff\1774353772892.jpg" alt="Matin Shahabadi" loading="lazy">
+            <div class="card-info">
+              <h3 style="font-size: 18px; color: var(--text);">مهندس متین شاه‌آبادی</h3>
+              <p style="font-size: 14px; color: var(--text-muted);">توسعه‌دهنده ارشد وب</p>
+            </div>
+          </div>
+
+          <!-- سایر کارت‌ها با دسته‌بندی‌های مختلف تکرار شوند -->
+        </div>
+      </div>
+    </section>
+
+    <!-- گالری تصاویر -->
+    <section class="gallery container reveal" id="gallery">
+      <h2>گالری تصاویر</h2>
+      <div class="gallery-slider">
+        <button class="gallery-arrow gallery-prev" id="galleryPrev" aria-label="تصویر قبلی">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <div class="gallery-track" id="galleryTrack" role="region" aria-label="گالری تصاویر">
+          <div class="gallery-slide" data-index="0">
+            <img src="assets/images/gallery/-2147483648_-210527.jpg" alt="تصویر گالری ۱" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-zoom-icon">&#128269;</span></div>
+          </div>
+          <div class="gallery-slide" data-index="1">
+            <img src="assets/images/gallery/-2147483648_-210529.jpg" alt="تصویر گالری ۲" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-zoom-icon">&#128269;</span></div>
+          </div>
+          <div class="gallery-slide" data-index="2">
+            <img src="assets/images/gallery/-2147483648_-210533.jpg" alt="تصویر گالری ۳" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-zoom-icon">&#128269;</span></div>
+          </div>
+          <div class="gallery-slide" data-index="3">
+            <img src="assets/images/gallery/-2147483648_-212067.jpg" alt="تصویر گالری ۴" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-zoom-icon">&#128269;</span></div>
+          </div>
+          <div class="gallery-slide" data-index="4">
+            <img src="assets/images/gallery/-2147483648_-212070.jpg" alt="تصویر گالری ۵" loading="lazy">
+            <div class="gallery-overlay"><span class="gallery-zoom-icon">&#128269;</span></div>
+          </div>
+        </div>
+        <button class="gallery-arrow gallery-next" id="galleryNext" aria-label="تصویر بعدی">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="gallery-dots" id="galleryDots"></div>
+      </div>
+    </section>
+
+    <section class="testimonials container reveal">
+
+      <h2>نظر دانش‌آموزان و والدین</h2>
+
+      <div class="testimonial-wrapper">
+
+        <div class="testimonial-card">
+
+          <p>
+            "در رشته شبکه مهارت‌های واقعی یاد گرفتم و الان در شرکت IT مشغول کارآموزی هستم."
+          </p>
+
+          <div class="testimonial-user">
+            <img src="assets/images/students/student1.jpg" loading="lazy" alt="دانش آموز">
+            <div>
+              <h4>علی رضایی</h4>
+              <span>دانش‌آموز شبکه</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="testimonial-card">
+
+          <p>
+            "محیط هنرستان بسیار منظم است و معلمان واقعاً به پیشرفت دانش‌آموزان اهمیت می‌دهند."
+          </p>
+
+          <div class="testimonial-user">
+            <img src="assets/images/students/student2.jpg" loading="lazy" alt="مادر محمد احمدی">
+            <div>
+              <h4>مادر محمد احمدی</h4>
+              <span>ولی دانش‌آموز</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="testimonial-card">
+
+          <p>
+            "کارگاه‌های برق بسیار مجهز هستند و آموزش‌ها کاملاً عملی انجام می‌شود."
+          </p>
+
+          <div class="testimonial-user">
+            <img src="assets/images/students/student3.jpg" loading="lazy" alt="امیر حسینی دانش‌آموز برق">
+            <div>
+              <h4>امیر حسینی</h4><span>دانش‌آموز برق</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="steps container reveal">
+
+      <h2>مراحل ثبت نام</h2>
+
+      <div class="steps-grid">
+
+        <div class="step">
+          <span>1</span>
+          <p>تکمیل فرم ثبت نام</p>
+        </div>
+
+        <div class="step">
+          <span>2</span>
+          <p>بررسی مدارک</p>
+        </div>
+
+        <div class="step">
+          <span>3</span>
+          <p>مصاحبه و ثبت نهایی</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="faq container reveal">
+
+      <h2>سوالات متداول</h2>
+
+      <div class="faq-item">
+
+        <button class="faq-question" aria-expanded="false" aria-controls="faq1">
+          شرایط ثبت نام در هنرستان چیست؟
+        </button>
+
+        <div class="faq-answer" id="faq1">
+          <p>
+            دانش‌آموزان پایه نهم می‌توانند با ارائه مدارک تحصیلی و شرکت در جلسه مشاوره ثبت نام کنند.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="faq-item">
+
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+          آیا آموزش‌ها عملی هستند؟
+        </button>
+
+        <div class="faq-answer" id="faq2">
+          <p>
+            بله بیش از 60٪ آموزش‌ها در کارگاه‌های عملی و آزمایشگاه انجام می‌شود.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="faq-item">
+
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+          چه رشته‌هایی در هنرستان ارائه می‌شود؟
+        </button>
+
+        <div class="faq-answer" id="faq3">
+          <p>
+            رشته‌های شبکه و نرم افزار، حسابداری و برق الکترونیک ارائه می‌شود.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="news container reveal" id="news">
+
+      <h2>اخبار و اطلاعیه‌ها</h2>
+
+      <div class="news-grid">
+
+        <div class="news-card">
+          <h4>برگزاری جشن علمی</h4>
+          <p>دانش‌آموزان در جشنواره علمی مدرسه شرکت کردند.</p>
+          <button class="btn">مشاهده بیشتر</button>
+        </div>
+
+        <div class="news-card">
+          <h4>مسابقات ورزشی</h4>
+          <p>مسابقات فوتبال بین کلاس‌ها برگزار شد.</p>
+          <button class="btn">مشاهده بیشتر</button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="cta container reveal">
+
+      <h2>آینده خود را از امروز بسازید</h2>
+
+      <p>
+        برای ثبت نام در رشته‌های فنی هنرستان عصر صنعت همین حالا اقدام کنید.
+      </p>
+
+      <a href="#contact" class="btn">
+        ثبت نام دانش‌آموز
+      </a>
+
+    </section>
+
+    <section class="contact container reveal" id="contact">
+
+      <h2>تماس با ما</h2>
+
+      <div class="contact-wrapper">
+
+        <div class="contact-info">
+
+          <div class="contact-card">
+            <span>📍</span>
+            <div>
+              <h4>آدرس</h4>
+              <p>البرز، فردیس، بین کانال و فلکه سوم</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <span>☎</span>
+            <div>
+              <h4>تلفن</h4>
+              <p>026-000000</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <span>✉</span>
+            <div>
+              <h4>ایمیل</h4>
+              <p>info@school.ir</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <span>⏰</span>
+            <div>
+              <h4>ساعات پاسخگویی</h4>
+              <p>شنبه تا چهارشنبه - 8 تا 16</p>
+            </div>
+          </div>
+
+        </div>
+        <form id="contactForm" method="POST" action="/api/contact">
+
+          <label for="name">نام</label>
+          <input id="name" type="text" placeholder="نام شما" required>
+
+          <label for="email">ایمیل</label>
+          <input id="email" type="email" placeholder="ایمیل" required>
+
+          <label for="message">پیام</label>
+          <textarea id="message" placeholder="پیام شما"></textarea>
+
+          <button type="submit" class="btn">
+            ارسال پیام
+          </button>
+
+        </form>
+
+        <div class="map">
+          <iframe src="https://balad.ir/embed?p=2NgitdCiIJ2hqz" loading="lazy" allowfullscreen
+            sandbox="allow-scripts allow-same-origin">
+          </iframe>
+        </div>
+
+
+      </div>
+
+    </section>
+
+    <!-- <div class="floating-contact">
+
+    <a href="tel:026000000">📞</a>
+
+    <a href="#">💬</a>
+
+    <a href="#">✈</a>
+
+  </div> -->
+
+
+  </main>
+
+  <footer class="footer">
+
+    <div class="container footer-top">
+
+      <div class="footer-brand">
+
+        <h3>هنرستان عصر صنعت</h3>
+
+        <p>
+          آموزش تخصصی رشته‌های فنی حرفه‌ای برای آینده‌ای موفق
+        </p>
+
+        <div class="footer-socials">
+
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="Telegram">✈</a>
+          <a href="#" aria-label="WhatsApp">💬</a>
+
+        </div>
+
+      </div>
+
+      <div class="footer-links">
+
+        <h4>دسترسی سریع</h4>
+
+        <a href="#about">درباره ما</a>
+        <a href="#programs">رشته‌ها</a>
+        <a href="#news">اخبار</a>
+        <a href="#contact">تماس با ما</a>
+
+      </div>
+
+      <div class="footer-links">
+
+        <h4>رشته‌ها</h4>
+
+        <a href="#">شبکه و نرم افزار</a>
+        <a href="#">حسابداری</a>
+        <a href="#">برق و الکترونیک</a>
+
+      </div>
+
+      <div class="footer-contact">
+
+        <h4>اطلاعات تماس</h4>
+
+        <p>📍 البرز، فردیس</p>
+        <p>☎ 026-000000</p>
+        <p>✉ info@school.ir</p>
+
+        <a class="footer-cta" href="#contact">
+          ثبت نام دانش‌آموز
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <p>
+        © تمامی حقوق برای هنرستان عصر صنعت محفوظ است
+      </p>
+
+      <a href="#top" class="back-top">
+        ↑ بازگشت به بالا
+      </a>
+
+    </div>
+
+  </footer>
+
+
+  <div class="news-modal" id="newsModal" role="dialog" aria-modal="true" aria-labelledby="newsTitle">
+
+    <div class="news-modal-content">
+
+      <span id="closeNews">✕</span>
+
+      <h3 id="newsTitle"></h3>
+
+      <p id="newsText"></p>
+
+    </div>
+
+  </div>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+    <img id="lightboxImg" alt="تصویر بزرگ شده">
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+
+  <script src="script.js" defer></script>
+
+</body>
+
+</html>
