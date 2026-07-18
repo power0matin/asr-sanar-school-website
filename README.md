@@ -15,7 +15,7 @@ Built with zero dependencies — pure HTML, CSS & JavaScript
 
 </div>
 
----
+
 
 ## Why This Project?
 
@@ -27,26 +27,26 @@ Asr Sanat Technical School (هنرستان عصر صنعت) needed a website tha
 - **Accessible** — ARIA labels, keyboard navigation, semantic HTML.
 - **SEO-ready** — Open Graph, Twitter Cards, and JSON-LD structured data included.
 
----
+
 
 ## Screenshots
 
 <div align="center">
 
 | Desktop | Mobile |
-|---------|--------|
+||--|
 | ![Desktop](assets/images/school.webp) | ![Mobile](assets/images/school.webp) |
 
 </div>
 
 > Replace the above with actual screenshots if available.
 
----
+
 
 ## Features at a Glance
 
 | Feature | Description |
-|---------|-------------|
+||-|
 | Dark / Light Mode | Persistent toggle saved to `localStorage` |
 | RTL Layout | Native Persian typography with Vazirmatn font |
 | Responsive Design | Mobile-first, all screen sizes |
@@ -61,27 +61,27 @@ Asr Sanat Technical School (هنرستان عصر صنعت) needed a website tha
 | Scroll Progress Bar | Visual page scroll indicator |
 | Animated Hero | Gradient animation with floating image effect |
 
----
+
 
 ## Programs
 
 | Program | Focus Areas |
-|---------|-------------|
+||-|
 | **Network & Software** | Programming, computer networking, web development, IT skills |
 | **Accounting** | Accounting principles, financial management, accounting software |
 | **Electronics & Electrical** | Electronic circuits, industrial electrical systems, technical skills |
 
----
+
 
 ## Tech Stack
 
 | Layer | Details |
-|-------|---------|
+|-||
 | **HTML5** | Semantic markup, ARIA attributes (`aria-label`, `aria-expanded`, `role`) |
 | **CSS3** | Custom properties, CSS Grid, `backdrop-filter`, `color-mix()`, `clamp()`, keyframe animations |
 | **JavaScript** | ES6+ vanilla JS — `IntersectionObserver`, event delegation, `localStorage` |
 
----
+
 
 ## Project Structure
 
@@ -106,7 +106,7 @@ Asr Sanat Technical School (هنرستان عصر صنعت) needed a website tha
         └── staff/              # Staff photos
 ```
 
----
+
 
 ## Getting Started
 
@@ -135,12 +135,12 @@ Then visit `http://localhost:8000`.
 
 Install the **Live Server** extension, right-click `index.html`, and choose **Open with Live Server**.
 
----
+
 
 ## Browser Support
 
 | Browser | Supported |
-|---------|-----------|
+||--|
 | Chrome 80+ | Yes |
 | Firefox 78+ | Yes |
 | Safari 14+ | Yes |
@@ -150,7 +150,7 @@ Install the **Live Server** extension, right-click `index.html`, and choose **Op
 
 Requires support for: CSS Custom Properties, CSS Grid, `backdrop-filter`, IntersectionObserver API.
 
----
+
 
 ## Deployment
 
@@ -161,26 +161,26 @@ This site can be deployed anywhere that serves static files:
 - **Vercel** — import project, zero-config deploy
 - **Any web server** — upload files via FTP/SFTP
 
----
+
 
 ## Contributing
 
 Contributions are welcome. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
----
+
 
 ## Contact
 
 **Asr Sanat Technical School** (هنرستان عصر صنعت)
 
 | | |
-|---|---|
+|||
 | Address | Fardis, Alborz, Iran (between Canal and Fleke-3, 29th New Street) |
 | Phone | 026-000000 |
 | Email | info@school.ir |
 | Hours | Saturday to Wednesday, 8:00 - 16:00 |
 
----
+
 
 ## License
 
