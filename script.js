@@ -150,18 +150,28 @@ document.querySelectorAll('#navMenu a[href^="#"]').forEach((link) => {
 // ========================
 // COUNTER ANIMATION
 // ========================
+const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
+function toEnglishNum(str) {
+  return str.replace(/[۰-۹]/g, (d) => persianDigits.indexOf(d));
+}
+
 const counterObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
 
       const counter = entry.target;
-      const target = +counter.innerText.replace("+", "");
+      const raw = toEnglishNum(counter.innerText.replace("+", ""));
+      const target = parseInt(raw, 10);
+
+      if (isNaN(target)) { counterObserver.unobserve(counter); return; }
 
       let count = 0;
+      const duration = 80;
+      const step = target / duration;
 
       const update = () => {
-        count += target / 80;
+        count += step;
 
         if (count < target) {
           counter.innerText = "+" + Math.floor(count);
