@@ -674,37 +674,50 @@ body.dark .theme-icon-dark {
 
 .hero-stats {
   display: flex;
-  gap: 16px;
+  gap: 2px;
   margin-bottom: 32px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
 }
 
 .stat {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 18px 28px;
-  border-radius: 14px;
+  flex: 1;
+  padding: 22px 16px;
   text-align: center;
-  min-width: 100px;
+  position: relative;
   transition: all 0.3s ease;
 }
 
+.stat:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .stat:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(200, 132, 26, 0.3);
+  background: rgba(200, 132, 26, 0.08);
 }
 
 .stat h3 {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 800;
   color: var(--accent);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  line-height: 1;
 }
 
 .stat p {
-  font-size: 13px;
-  opacity: 0.7;
+  font-size: 12.5px;
+  opacity: 0.55;
   font-weight: 500;
+  letter-spacing: 0.3px;
 }
 
 .hero-image {
@@ -1306,25 +1319,6 @@ button {
   opacity: 1;
 
   transform: none;
-
-}
-
-/* ========================= RESPONSIVE ========================= */
-
-@media(max-width:900px) {
-
-  .hero-wrapper {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .hero-stats {
-    justify-content: center;
-  }
 
 }
 
