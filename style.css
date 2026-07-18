@@ -323,6 +323,24 @@ nav a:hover {
 
 }
 
+/* theme icons */
+.theme-icon-light,
+.theme-icon-dark {
+  transition: var(--transition);
+}
+
+.theme-icon-dark {
+  display: none;
+}
+
+body.dark .theme-icon-light {
+  display: none;
+}
+
+body.dark .theme-icon-dark {
+  display: block;
+}
+
 /* mobile menu */
 
 .menu-toggle {
@@ -963,13 +981,12 @@ button {
 }
 
 .back-top {
-
   text-decoration: none;
-
   color: var(--text);
-
   transition: .3s;
-
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .back-top:hover {
@@ -1464,8 +1481,17 @@ nav a.active::after {
 .contact-card span {
   color: var(--primary);
 
-  font-size: 22px;
+}
 
+.contact-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-soft);
+  border-radius: 12px;
+  flex-shrink: 0;
 }
 
 .contact-card h4 {
@@ -1698,6 +1724,17 @@ body.dark .map iframe {
 
   font-size: 18px;
 
+}
+
+.adv-icon {
+  margin-bottom: 14px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-soft);
+  border-radius: 12px;
 }
 
 .adv p {
@@ -2407,7 +2444,6 @@ body.dark .map iframe {
   padding: 1.5rem;
   text-align: center;
 }
-#ef4444
 /* استایل دکمه‌های فیلتر */
 .filter-controls {
   display: flex;

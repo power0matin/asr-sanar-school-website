@@ -104,7 +104,7 @@ if (form) {
       return;
     }
 
-    showToast("✅ پیام شما با موفقیت ارسال شد", "success");
+    showToast("پیام شما با موفقیت ارسال شد", "success");
     form.reset();
   });
 }
@@ -236,7 +236,7 @@ if ("IntersectionObserver" in window) {
   lazyImages.forEach((img) => imgObserver.observe(img));
 }
 
-console.log("script loaded");
+// script loaded
 
 // FAQ
 document.querySelectorAll(".faq-question").forEach((btn) => {
