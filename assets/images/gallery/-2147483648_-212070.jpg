@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="600" viewBox="0 0 680 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e40af"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="680" height="600" fill="url(#bg)"/>
+  <rect width="680" height="600" fill="url(#grid)"/>
+  <circle cx="520" cy="120" r="180" fill="rgba(59,130,246,0.08)"/>
+  <circle cx="160" cy="480" r="140" fill="rgba(30,64,175,0.06)"/>
+  <text x="340" y="280" text-anchor="middle" font-family="system-ui,sans-serif" font-size="48" font-weight="700" fill="rgba(255,255,255,0.15)">گالری</text>
+  <text x="340" y="340" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" fill="rgba(255,255,255,0.1)">عصر صنعت</text>
+</svg>
