@@ -201,32 +201,6 @@ if (modal) {
 }
 
 // ========================
-// ACTIVE NAV LINK ON SCROLL (Fixed for sections not in nav)
-// ========================
-if (header && sections && navLinks) {
-  window.addEventListener("scroll", () => {
-    const scrollY = window.pageYOffset;
-    const headerHeight = header.offsetHeight + 50;
-
-    // بررسی کنیم سکشن‌هایی که در nav هستند
-    navLinks.forEach((link) => {
-      const targetId = link.getAttribute("href").replace("#", "");
-      const targetSection = document.getElementById(targetId);
-
-      if (!targetSection) return; // اگر سکشن در صفحه نبود (ایمن)
-
-      const sectionTop = targetSection.offsetTop - headerHeight;
-      const sectionHeight = targetSection.offsetHeight;
-
-      const isActive =
-        scrollY >= sectionTop && scrollY < sectionTop + sectionHeight;
-
-      link.classList.toggle("active", isActive);
-    });
-  });
-}
-
-// ========================
 // LAZY LOADING FALLBACK
 // ========================
 const lazyImages = document.querySelectorAll("img[loading='lazy']");
@@ -349,19 +323,21 @@ if (galleryTrack && btnPrev && btnNext) {
       const dot = document.createElement("button");
       dot.className = "gallery-dot" + (i === 0 ? " active" : "");
       dot.setAttribute("aria-label", `تصویر ${i + 1}`);
-      dot.addEventListener("click", () => scrollToSlide(i));
+      dot.addEventListener("click", () => goToSlide(i));
       galleryDots.appendChild(dot);
     });
   }
 
-  function scrollToSlide(index) {
+  function goToSlide(index) {
     if (index < 0 || index >= totalSlides) return;
     currentIndex = index;
+
     const slide = slides[index];
-    const trackRect = galleryTrack.getBoundingClientRect();
-    const slideRect = slide.getBoundingClientRect();
-    const offset = slideRect.left - trackRect.left - (trackRect.width - slideRect.width) / 2;
-    galleryTrack.scrollBy({ left: offset, behavior: "smooth" });
+    const slideWidth = slide.offsetWidth;
+    const trackWidth = galleryTrack.parentElement.offsetWidth;
+    const offset = slide.offsetLeft - (trackWidth - slideWidth) / 2;
+
+    galleryTrack.style.transform = `translateX(${-offset}px)`;
     updateDots();
   }
 
@@ -371,38 +347,20 @@ if (galleryTrack && btnPrev && btnNext) {
     dots.forEach((dot, i) => dot.classList.toggle("active", i === currentIndex));
   }
 
-  function updateCurrentIndex() {
-    const trackCenter = galleryTrack.scrollLeft + galleryTrack.clientWidth / 2;
-    let closest = 0;
-    let minDist = Infinity;
-    slides.forEach((slide, i) => {
-      const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
-      const dist = Math.abs(trackCenter - slideCenter);
-      if (dist < minDist) { minDist = dist; closest = i; }
-    });
-    if (closest !== currentIndex) {
-      currentIndex = closest;
-      updateDots();
-    }
-  }
-
   btnNext.addEventListener("click", () => {
-    scrollToSlide(Math.min(currentIndex + 1, totalSlides - 1));
+    goToSlide(currentIndex >= totalSlides - 1 ? 0 : currentIndex + 1);
   });
 
   btnPrev.addEventListener("click", () => {
-    scrollToSlide(Math.max(currentIndex - 1, 0));
+    goToSlide(currentIndex <= 0 ? totalSlides - 1 : currentIndex - 1);
   });
-
-  galleryTrack.addEventListener("scroll", updateCurrentIndex, { passive: true });
 
   // Autoplay
   function startAutoScroll() {
     stopAutoScroll();
     autoScrollInterval = setInterval(() => {
-      const next = currentIndex >= totalSlides - 1 ? 0 : currentIndex + 1;
-      scrollToSlide(next);
-    }, 4500);
+      goToSlide(currentIndex >= totalSlides - 1 ? 0 : currentIndex + 1);
+    }, 4000);
   }
 
   function stopAutoScroll() {
@@ -410,17 +368,20 @@ if (galleryTrack && btnPrev && btnNext) {
   }
 
   startAutoScroll();
-  galleryTrack.addEventListener("mouseenter", stopAutoScroll);
-  galleryTrack.addEventListener("mouseleave", startAutoScroll);
-  galleryTrack.addEventListener("touchstart", stopAutoScroll, { passive: true });
-  galleryTrack.addEventListener("touchend", () => setTimeout(startAutoScroll, 3000), { passive: true });
+  galleryTrack.parentElement.addEventListener("mouseenter", stopAutoScroll);
+  galleryTrack.parentElement.addEventListener("mouseleave", startAutoScroll);
+  galleryTrack.parentElement.addEventListener("touchstart", stopAutoScroll, { passive: true });
+  galleryTrack.parentElement.addEventListener("touchend", () => setTimeout(startAutoScroll, 3000), { passive: true });
 
   // Keyboard navigation
   galleryTrack.setAttribute("tabindex", "0");
   galleryTrack.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") { e.preventDefault(); scrollToSlide(Math.min(currentIndex + 1, totalSlides - 1)); }
-    if (e.key === "ArrowLeft") { e.preventDefault(); scrollToSlide(Math.max(currentIndex - 1, 0)); }
+    if (e.key === "ArrowRight") { e.preventDefault(); goToSlide(currentIndex >= totalSlides - 1 ? 0 : currentIndex + 1); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); goToSlide(currentIndex <= 0 ? totalSlides - 1 : currentIndex - 1); }
   });
+
+  // Initialize position
+  goToSlide(0);
 }
 
 // ================= MODERN LIGHTBOX FOR GALLERY =================
@@ -501,35 +462,46 @@ if (galleryTrack && btnPrev && btnNext) {
 })();
 
 document.addEventListener("DOMContentLoaded", () => {
-  const filterButtons = document.querySelectorAll(".filter-btn");
+  const filterButtons = document.querySelectorAll(".staff-filter");
   const staffCards = document.querySelectorAll(".staff-card");
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      // تغییر کلاس فعال برای دکمه‌ها
       filterButtons.forEach((btn) => btn.classList.remove("active"));
       button.classList.add("active");
 
       const filterValue = button.getAttribute("data-filter");
 
+      // Phase 1: hide non-matching cards
       staffCards.forEach((card) => {
         const category = card.getAttribute("data-category");
+        const shouldShow = filterValue === "all" || category === filterValue;
 
-        // پیاده‌سازی انیمیشن فیلتر
-        if (filterValue === "all" || category === filterValue) {
-          card.style.display = "";
-          setTimeout(() => {
-            card.style.opacity = "1";
-            card.style.transform = "scale(1)";
-          }, 10);
-        } else {
-          card.style.opacity = "0";
-          card.style.transform = "scale(0.9)";
-          setTimeout(() => {
-            card.style.display = "none";
-          }, 400); // همزمان با مدت زمان transition در CSS
+        if (!shouldShow && !card.classList.contains("hidden")) {
+          card.classList.add("hiding");
         }
       });
+
+      // Phase 2: after fade out, swap visibility and stagger entrance
+      setTimeout(() => {
+        let delay = 0;
+
+        staffCards.forEach((card) => {
+          const category = card.getAttribute("data-category");
+          const shouldShow = filterValue === "all" || category === filterValue;
+
+          card.classList.remove("hiding", "showing");
+
+          if (!shouldShow) {
+            card.classList.add("hidden");
+          } else {
+            card.classList.remove("hidden");
+            card.style.animationDelay = delay + "ms";
+            card.classList.add("showing");
+            delay += 50;
+          }
+        });
+      }, 300);
     });
   });
 });
