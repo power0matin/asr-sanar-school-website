@@ -1,10 +1,8 @@
-feat(ui): refine gallery, copy and site motion
+feat(programs): add active program switcher navigation
 
-- redesign gallery as a clean desktop mosaic and mobile swipe rail
-- remove autoplay, gallery toolbar, arrows and pagination controls
-- simplify stiff school-facing copy across home and program pages
-- add lightweight motion to hero, logo, cards, header, links and lightbox
-- remove the reduced-motion override and related JavaScript branch
-- keep gallery lightbox keyboard navigation and focus handling
-- update static validation and browser smoke coverage for the new UI
-- fix custom 404 favicon assertions for the current branding assets
+- replace the repeated school identity card on program pages with a three-program switcher
+- highlight the current program with aria-current and a distinct active state
+- keep all program pages one click away with consistent ordering
+- add responsive horizontal navigation for narrow screens
+- center the active program automatically on mobile without changing tab order
+- preserve breadcrumbs, theme support, RTL layout and existing program content

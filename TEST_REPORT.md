@@ -1,21 +1,39 @@
-# Test Report — Gallery & Motion Update
+# Program Switcher Test Report
 
-## PASS
+Baseline: `af83204683d1f9a993d7d172af2d3fce0653f506`
 
-- `node --check script.js`
-- `node --check scripts/validate.js`
-- `node --check tests/smoke.js`
-- Static validator with GitHub Pages base path
-- HTML parse for `index.html`, `404.html`, and all three program pages
-- CSS parse with `tinycss2` (no parser errors)
-- No `prefers-reduced-motion` CSS/JS override remains
-- No gallery autoplay/toolbar controls remain
-- Gallery mosaic contains four interactive images
-- Branding copy cleanup is enforced by validator
-- 404 base-path favicon validator updated to `favicon.ico`
+## Changes verified
 
-## Browser smoke test
+- All three program pages contain exactly three program navigation links.
+- Each page has exactly one active program.
+- Active link uses both `.is-active` and `aria-current="page"`.
+- The active link points to the page currently being viewed.
+- The old `program-school-identity` block is removed from all three pages.
+- Links to Network & Software, Accounting, and Electrotechnics exist on every program page.
+- Existing breadcrumb navigation remains intact.
+- Shared `style.css` and `script.js` remain in use.
+- New switcher CSS and helper JavaScript are loaded only by program pages.
+- Mobile switcher preserves program order and automatically centers the active item.
+- CSS parsing completed without parser errors.
+- `node --check program-switcher.js` passed.
 
-`tests/smoke.js` was updated for the new desktop mosaic, mobile swipe rail, no-autoplay requirement, logo motion, lightbox, theme, FAQ, program pages, overflow, and custom 404 behavior.
+## Responsive behavior
 
-The current execution sandbox blocks browser navigation to both localhost and `file://` URLs (`ERR_BLOCKED_BY_ADMINISTRATOR`), so the interactive browser suite cannot be executed locally here. GitHub Actions will execute the Playwright smoke test after commit/push.
+Desktop:
+- three equal program cards are visible side by side;
+- current program uses the school's blue/gold visual language;
+- hover motion is limited to transform/shadow.
+
+Mobile:
+- switcher becomes a horizontal scroll-snap rail;
+- scrollbar is hidden;
+- active program is centered automatically;
+- all programs remain reachable by swipe/touch;
+- tab ordering remains consistent across pages.
+
+## Accessibility
+
+- switcher is a real `<nav>` with an accessible label;
+- current page uses `aria-current="page"`;
+- links remain native keyboard-focusable anchors;
+- existing global `:focus-visible` styling continues to apply.
