@@ -7,7 +7,7 @@
   const nav = document.getElementById("siteNav");
   const themeToggle = document.getElementById("themeToggle");
   const progress = document.getElementById("scrollProgress");
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const header = document.getElementById("siteHeader");
 
   const setTheme = (theme) => {
     root.dataset.theme = theme;
@@ -54,7 +54,7 @@
   });
 
   const reveals = [...document.querySelectorAll(".reveal")];
-  if (prefersReducedMotion.matches || !("IntersectionObserver" in window)) {
+  if (!("IntersectionObserver" in window)) {
     reveals.forEach((el) => el.classList.add("is-visible"));
   } else {
     const observer = new IntersectionObserver((entries) => {
@@ -63,7 +63,7 @@
         entry.target.classList.add("is-visible");
         observer.unobserve(entry.target);
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1, rootMargin: "0px 0px -4% 0px" });
     reveals.forEach((el) => observer.observe(el));
   }
 
@@ -71,6 +71,7 @@
     if (!progress) return;
     const max = document.documentElement.scrollHeight - window.innerHeight;
     progress.style.width = `${max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0}%`;
+    header?.classList.toggle("is-scrolled", window.scrollY > 12);
   };
   updateProgress();
   window.addEventListener("scroll", updateProgress, { passive: true });
@@ -78,87 +79,14 @@
 
   const gallery = document.querySelector("[data-gallery]");
   if (gallery) {
-    const viewport = gallery.querySelector("[data-gallery-viewport]");
-    const track = gallery.querySelector("[data-gallery-track]");
-    const slides = [...gallery.querySelectorAll(".gallery-slide")];
-    const prev = gallery.querySelector("[data-gallery-prev]");
-    const next = gallery.querySelector("[data-gallery-next]");
-    const play = gallery.querySelector("[data-gallery-play]");
-    const dots = gallery.querySelector("[data-gallery-dots]");
-    let index = 0;
-    let timer = null;
-    let manualPause = false;
-    let pointerStart = null;
-
-    const dotButtons = slides.map((_, i) => {
-      const dot = document.createElement("button");
-      dot.type = "button";
-      dot.className = "gallery-dot";
-      dot.setAttribute("aria-label", `رفتن به تصویر ${i + 1}`);
-      dot.addEventListener("click", () => goTo(i, true));
-      dots?.appendChild(dot);
-      return dot;
-    });
-
-    const updateDots = () => dotButtons.forEach((dot, i) => dot.setAttribute("aria-current", i === index ? "true" : "false"));
-    const updatePosition = () => {
-      if (!viewport || !track || !slides.length) return;
-      const slide = slides[index];
-      const viewportWidth = viewport.clientWidth;
-      const offset = slide.offsetLeft - ((viewportWidth - slide.offsetWidth) / 2);
-      track.style.transform = `translate3d(${-offset}px,0,0)`;
-      updateDots();
-    };
-
-    const stopTimer = () => { if (timer) window.clearInterval(timer); timer = null; };
-    const startTimer = () => {
-      stopTimer();
-      if (manualPause || prefersReducedMotion.matches || document.hidden || slides.length < 2) return;
-      timer = window.setInterval(() => goTo(index + 1, false), 5000);
-    };
-    const updatePlay = () => {
-      if (!play) return;
-      play.setAttribute("aria-pressed", String(manualPause));
-      play.textContent = manualPause ? "ادامه نمایش خودکار" : "توقف نمایش خودکار";
-    };
-    const goTo = (target, userInitiated = false) => {
-      index = (target + slides.length) % slides.length;
-      updatePosition();
-      if (userInitiated) startTimer();
-    };
-
-    prev?.addEventListener("click", () => goTo(index - 1, true));
-    next?.addEventListener("click", () => goTo(index + 1, true));
-    play?.addEventListener("click", () => { manualPause = !manualPause; updatePlay(); manualPause ? stopTimer() : startTimer(); });
-    viewport?.addEventListener("mouseenter", stopTimer);
-    viewport?.addEventListener("mouseleave", startTimer);
-    viewport?.addEventListener("focusin", stopTimer);
-    viewport?.addEventListener("focusout", startTimer);
-    viewport?.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowLeft") { event.preventDefault(); goTo(index + 1, true); }
-      if (event.key === "ArrowRight") { event.preventDefault(); goTo(index - 1, true); }
-    });
-    viewport?.addEventListener("pointerdown", (event) => { pointerStart = event.clientX; stopTimer(); });
-    viewport?.addEventListener("pointerup", (event) => {
-      if (pointerStart == null) return;
-      const delta = event.clientX - pointerStart;
-      pointerStart = null;
-      if (Math.abs(delta) > 45) goTo(index + (delta < 0 ? 1 : -1), true); else startTimer();
-    });
-    viewport?.addEventListener("pointercancel", () => { pointerStart = null; startTimer(); });
-    document.addEventListener("visibilitychange", () => document.hidden ? stopTimer() : startTimer());
-    prefersReducedMotion.addEventListener?.("change", startTimer);
-    window.addEventListener("resize", updatePosition, { passive: true });
-
-    updatePlay();
-    requestAnimationFrame(() => { updatePosition(); startTimer(); });
-
+    const slides = [...gallery.querySelectorAll(".gallery-item")];
     const lightbox = document.getElementById("lightbox");
     const lightboxImage = document.getElementById("lightboxImage");
     const lightboxCaption = document.getElementById("lightboxCaption");
     const close = lightbox?.querySelector("[data-lightbox-close]");
     const lbPrev = lightbox?.querySelector("[data-lightbox-prev]");
     const lbNext = lightbox?.querySelector("[data-lightbox-next]");
+    let index = 0;
     let lastFocused = null;
 
     const renderLightbox = () => {
@@ -167,8 +95,9 @@
       if (!slide || !img || !lightboxImage || !lightboxCaption) return;
       lightboxImage.src = slide.dataset.src || img.currentSrc || img.src;
       lightboxImage.alt = img.alt;
-      lightboxCaption.textContent = `${img.alt} — ${index + 1} از ${slides.length}`;
+      lightboxCaption.textContent = `${index + 1} از ${slides.length}`;
     };
+
     const openLightbox = (slideIndex) => {
       if (!lightbox) return;
       index = slideIndex;
@@ -176,23 +105,27 @@
       lastFocused = document.activeElement;
       lightbox.hidden = false;
       body.style.overflow = "hidden";
-      stopTimer();
       close?.focus();
     };
+
     const closeLightbox = () => {
       if (!lightbox) return;
       lightbox.hidden = true;
       body.style.overflow = "";
       lastFocused?.focus?.();
-      startTimer();
     };
-    const moveLightbox = (delta) => { goTo(index + delta, false); renderLightbox(); };
+
+    const moveLightbox = (delta) => {
+      index = (index + delta + slides.length) % slides.length;
+      renderLightbox();
+    };
 
     slides.forEach((slide, i) => slide.addEventListener("click", () => openLightbox(i)));
     close?.addEventListener("click", closeLightbox);
     lbPrev?.addEventListener("click", () => moveLightbox(-1));
     lbNext?.addEventListener("click", () => moveLightbox(1));
     lightbox?.addEventListener("click", (event) => { if (event.target === lightbox) closeLightbox(); });
+
     document.addEventListener("keydown", (event) => {
       if (!lightbox || lightbox.hidden) return;
       if (event.key === "Escape") closeLightbox();

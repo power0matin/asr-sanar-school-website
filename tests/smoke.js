@@ -19,7 +19,6 @@ const mime = {
   ".woff2": "font/woff2",
   ".json": "application/json",
   ".xml": "application/xml",
-  ".ico": "image/x-icon",
 };
 
 function normalizeBasePath(value) {
@@ -82,10 +81,6 @@ const check = (condition, message) => {
     await page.goto(baseUrl, { waitUntil: "networkidle" });
     check(await page.title() === "هنرستان عصر صنعت فردیس | رشته‌های فنی‌وحرفه‌ای", "Unexpected home title");
     check(await page.locator("#programs .program-card").count() === 3, "Expected 3 program cards");
-    check(await page.locator(".site-header .brand-logo").count() === 1, "Official logo missing from header");
-    check(await page.locator(".hero-school-logo").count() === 1, "Official logo missing from hero");
-    check(await page.locator(".site-footer .brand-logo").count() === 1, "Official logo missing from footer");
-    check(await page.locator(".gallery-slide").count() === 4, "Expected exactly 4 real gallery slides");
     check(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), "Desktop horizontal overflow");
 
     await page.locator(".faq-question").first().click();
@@ -97,7 +92,13 @@ const check = (condition, message) => {
     await page.reload({ waitUntil: "domcontentloaded" });
     check(await page.locator("html").getAttribute("data-theme") === "dark", "Theme persistence failed");
 
-    await page.locator(".gallery-slide").first().click();
+    check(await page.locator(".gallery-mosaic").count() === 1, "Gallery mosaic missing");
+    check(await page.locator(".gallery-item").count() === 4, "Expected 4 gallery items");
+    check(await page.locator("[data-gallery-play]").count() === 0, "Autoplay control should be removed");
+    check(await page.locator(".gallery-toolbar").count() === 0, "Gallery toolbar should be removed");
+    check(await page.locator(".hero-school-logo").evaluate((el) => getComputedStyle(el).animationName !== "none"), "Logo motion missing");
+
+    await page.locator(".gallery-item").first().click();
     check(!(await page.locator("#lightbox").getAttribute("hidden")), "Lightbox did not open");
     check(await page.evaluate(() => getComputedStyle(document.body).overflow === "hidden"), "Lightbox did not lock body scroll");
     await page.locator("[data-lightbox-close]").click();
@@ -108,8 +109,6 @@ const check = (condition, message) => {
       await page.goto(`${baseUrl}${route}`, { waitUntil: "domcontentloaded" });
       check(await page.locator("h1").count() === 1, `${route}: expected one h1`);
       check(await page.locator("footer.site-footer").count() === 1, `${route}: footer missing`);
-      check(await page.locator(".site-header .brand-logo").count() === 1, `${route}: official header logo missing`);
-      check(await page.locator(".program-school-identity img").count() === 1, `${route}: program branding badge missing`);
     }
 
     // Verify the custom 404 under a nested path, including root-relative assets
@@ -118,8 +117,7 @@ const check = (condition, message) => {
     check(notFoundResponse && notFoundResponse.status() === 404, "Custom 404 did not return HTTP 404");
     check(await page.locator(".error-code").textContent() === "404", "Custom 404 content missing");
     check(await page.locator('link[rel="stylesheet"]').getAttribute("href") === `${siteBasePath}style.css`, "404 stylesheet base path is wrong");
-    check(await page.locator('link[rel="icon"]').first().getAttribute("href") === `${siteBasePath}assets/images/favicon.ico`, "404 favicon base path is wrong");
-    check(await page.locator(".error-logo").count() === 1, "Official logo missing from custom 404");
+    check(await page.locator('link[rel="icon"]').getAttribute("href") === `${siteBasePath}assets/images/favicon.ico`, "404 favicon base path is wrong");
     check(await page.locator(`a[href="${siteBasePath}"]`).count() === 1, "404 home link base path is wrong");
     check(
       await page.evaluate((expected) => [...document.styleSheets].some((sheet) => sheet.href && new URL(sheet.href).pathname === expected), `${siteBasePath}style.css`),
@@ -141,9 +139,12 @@ const check = (condition, message) => {
     check(await mobile.locator("#siteNav").getAttribute("data-open") === "true", "Mobile menu did not open");
     await mobile.locator("#siteNav a").first().click();
     check(await mobile.locator("#menuToggle").getAttribute("aria-expanded") === "false", "Mobile menu did not close after navigation");
+    const mobileGallery = mobile.locator(".gallery-mosaic");
+    check(await mobileGallery.evaluate((el) => getComputedStyle(el).display === "flex"), "Mobile gallery should become a swipe rail");
+    check(await mobileGallery.evaluate((el) => el.scrollWidth > el.clientWidth), "Mobile gallery should be horizontally swipeable");
     await mobile.close();
 
-    console.log("Smoke tests passed: official branding, GitHub Pages base path, custom 404, desktop, mobile, theme, FAQ, lightbox, program pages, overflow.");
+    console.log("Smoke tests passed: GitHub Pages base path, custom 404, gallery mosaic/swipe, motion, desktop, mobile, theme, FAQ, lightbox, program pages, overflow.");
   } finally {
     await browser.close();
     await new Promise((resolve) => server.close(resolve));

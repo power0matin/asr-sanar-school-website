@@ -1,9 +1,10 @@
-fix(ci): validate GitHub Pages base paths and modernize Actions
+feat(ui): refine gallery, copy and site motion
 
-- make static validation aware of the GitHub Pages project base path
-- validate custom 404 assets and project-root navigation correctly
-- simulate project-path deployment and nested 404s in browser smoke tests
-- add explicit SITE_BASE_PATH configuration to CI
-- upgrade checkout and setup-node actions to v6
-- run CI with Node.js 24 to remove deprecated action runtime warnings
-- retain desktop, mobile, theme, FAQ, lightbox, program and overflow smoke coverage
+- redesign gallery as a clean desktop mosaic and mobile swipe rail
+- remove autoplay, gallery toolbar, arrows and pagination controls
+- simplify stiff school-facing copy across home and program pages
+- add lightweight motion to hero, logo, cards, header, links and lightbox
+- remove the reduced-motion override and related JavaScript branch
+- keep gallery lightbox keyboard navigation and focus handling
+- update static validation and browser smoke coverage for the new UI
+- fix custom 404 favicon assertions for the current branding assets

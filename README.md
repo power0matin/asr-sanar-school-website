@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="assets/images/school-logo.png" alt="Official Asr Sanat Technical School logo" width="190">
+<img src="assets/images/school-logo.png" alt="Asr Sanat Technical School logo" width="190">
 
 ### A lightweight, Persian-first website for Asr Sanat Technical School in Fardis
 
@@ -27,7 +27,7 @@ The revised website intentionally avoids unverified claims. Public directory inf
 
 ## Official Branding
 
-The website uses the official school logo supplied for this project. The untouched upload is retained as `assets/images/school-logo-original.png`; `school-logo.png` only removes excess transparent canvas while preserving the logo itself and its proportions. Favicon, app-icon, and social-preview derivatives are built directly from that same logo—no replacement or generated school mark is used.
+The website uses the school logo supplied for this project. The untouched upload is kept as `assets/images/school-logo-original.png`, while `school-logo.png` only removes extra transparent canvas for cleaner placement in the UI. Favicons, app icons, and the social preview are derived from the same logo.
 
 ## Screenshots
 
@@ -40,15 +40,14 @@ Dark-mode captures are also generated as `desktop-dark.png` and `mobile-dark.png
 ## Features
 
 - Persian RTL layout with the local Vazirmatn font
-- **Official Asr Sanat school logo** integrated into the header, hero, footer, program pages, 404 page, favicon, app icons, and social preview
+- **Asr Sanat school logo** used consistently in the header, hero, footer, program pages, 404 page, favicon, app icons, and social preview
 - Responsive desktop, tablet, and mobile layouts
 - Persistent light/dark theme with system-theme fallback
 - Accessible mobile navigation and keyboard focus states
 - FAQ accordion with synchronized ARIA state
-- Responsive gallery with keyboard navigation, swipe gestures, autoplay pause/resume, and accessible lightbox
+- Clean responsive gallery with a desktop mosaic, mobile swipe rail, keyboard access, and lightbox
 - Dedicated pages for all three listed educational programs
 - Canonical URLs, Open Graph, Twitter Card metadata, JSON-LD, `robots.txt`, and `sitemap.xml`
-- Reduced-motion support
 - No fake contact-form success state; contact uses the publicly listed fixed phone number
 - Portable screenshot tooling and browser smoke tests
 - GitHub Actions validation on pushes and pull requests
@@ -70,7 +69,7 @@ The website does **not** publish an email address, opening hours, student/teache
 The production website has **zero runtime package dependencies**:
 
 - **HTML5** — semantic structure, metadata, ARIA
-- **CSS3** — Grid/Flexbox, custom properties, responsive design, reduced-motion handling
+- **CSS3** — Grid/Flexbox, custom properties, responsive design and lightweight motion
 - **Vanilla JavaScript** — theme persistence, menu state, FAQ, gallery, lightbox, scroll progress
 
 Playwright is included only as a **development dependency** for automated browser tests and screenshots.
@@ -177,7 +176,6 @@ The site includes:
 - FAQ `aria-expanded` synchronization
 - Keyboard-operable gallery and lightbox
 - Lightbox focus restoration and focus containment
-- `prefers-reduced-motion` support
 - Text colors selected to meet normal-text WCAG AA contrast on primary surfaces
 
 ## SEO & Deployment

@@ -50,7 +50,7 @@ Update [`assets/data/school.json`](assets/data/school.json) and [`SOURCES.md`](S
 - Prefer semantic HTML and native browser APIs.
 - Preserve Persian RTL behavior.
 - Keep keyboard interactions and ARIA state synchronized.
-- Respect `prefers-reduced-motion`.
+- Keep motion lightweight: prefer `transform` and `opacity`, and avoid layout-heavy animation.
 - Avoid inline styles and inline event handlers.
 - Avoid unnecessary external scripts and trackers.
 - Keep mobile layouts free of horizontal overflow from 320px upward.
