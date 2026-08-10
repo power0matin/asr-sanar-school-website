@@ -1,39 +1,17 @@
-# Program Switcher Test Report
+# Test Report — Simplified Program Switcher
 
-Baseline: `af83204683d1f9a993d7d172af2d3fce0653f506`
+## PASS
 
-## Changes verified
+- `network.html`, `accounting.html`, and `electronics.html` parse successfully.
+- Each program page contains exactly one compact `.program-switcher`.
+- Each switcher contains exactly three program links.
+- Each page has exactly one `aria-current="page"` active tab pointing to itself.
+- Removed helper copy: `بین رشته‌ها جابه‌جا شو`.
+- Removed redundant switcher title, subtitles, icons, arrows, and `رشته آموزشی` kicker.
+- Removed the `program-switcher.js` include; the component is CSS-only.
+- Static site validator passes with the GitHub Pages base path when unchanged binary assets are allowed from the existing repository checkout.
+- Existing metadata, RTL structure, breadcrumbs, footer, and school-data checks remain valid.
 
-- All three program pages contain exactly three program navigation links.
-- Each page has exactly one active program.
-- Active link uses both `.is-active` and `aria-current="page"`.
-- The active link points to the page currently being viewed.
-- The old `program-school-identity` block is removed from all three pages.
-- Links to Network & Software, Accounting, and Electrotechnics exist on every program page.
-- Existing breadcrumb navigation remains intact.
-- Shared `style.css` and `script.js` remain in use.
-- New switcher CSS and helper JavaScript are loaded only by program pages.
-- Mobile switcher preserves program order and automatically centers the active item.
-- CSS parsing completed without parser errors.
-- `node --check program-switcher.js` passed.
+## Visual intent
 
-## Responsive behavior
-
-Desktop:
-- three equal program cards are visible side by side;
-- current program uses the school's blue/gold visual language;
-- hover motion is limited to transform/shadow.
-
-Mobile:
-- switcher becomes a horizontal scroll-snap rail;
-- scrollbar is hidden;
-- active program is centered automatically;
-- all programs remain reachable by swipe/touch;
-- tab ordering remains consistent across pages.
-
-## Accessibility
-
-- switcher is a real `<nav>` with an accessible label;
-- current page uses `aria-current="page"`;
-- links remain native keyboard-focusable anchors;
-- existing global `:focus-visible` styling continues to apply.
+The switcher is now a compact segmented navigation control: three text-only tabs, a clear blue active state with a subtle school-gold accent, and horizontal overflow only when a narrow viewport cannot fit all three labels.

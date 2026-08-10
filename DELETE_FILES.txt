@@ -1,0 +1,2 @@
+# Remove the previous switcher helper; the simplified tabs are CSS-only.
+program-switcher.js

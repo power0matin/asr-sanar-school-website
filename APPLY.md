@@ -1,26 +1,16 @@
 # Apply this update
 
-This package is based on commit:
+Extract the archive over the repository root and replace existing files.
 
-`af83204683d1f9a993d7d172af2d3fce0653f506`
+Then remove the path listed in `DELETE_FILES.txt`:
 
-Copy these files over the repository root:
+```text
+program-switcher.js
+```
 
-- `programs/network.html`
-- `programs/accounting.html`
-- `programs/electronics.html`
-- `program-switcher.css`
-- `program-switcher.js`
-
-No files need to be deleted.
-
-Recommended checks after copying:
+Recommended checks:
 
 ```bash
-node --check program-switcher.js
 npm run validate
 npm test
 ```
-
-The existing `style.css` is intentionally left untouched. The switcher styles are isolated in
-`program-switcher.css` so this change does not risk regressions in the main site layout.

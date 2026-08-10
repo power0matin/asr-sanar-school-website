@@ -1,8 +1,8 @@
-feat(programs): add active program switcher navigation
+refactor(programs): simplify program switcher navigation
 
-- replace the repeated school identity card on program pages with a three-program switcher
-- highlight the current program with aria-current and a distinct active state
-- keep all program pages one click away with consistent ordering
-- add responsive horizontal navigation for narrow screens
-- center the active program automatically on mobile without changing tab order
-- preserve breadcrumbs, theme support, RTL layout and existing program content
+- replace oversized program cards with a compact three-tab switcher
+- remove helper text, icons, subtitles, arrows and decorative chrome
+- keep the current program clearly highlighted with aria-current
+- preserve quick one-click navigation between all program pages
+- keep mobile behavior compact and horizontally scrollable when needed
+- remove the now-unnecessary program switcher JavaScript
