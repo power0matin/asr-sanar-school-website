@@ -1,8 +1,8 @@
-refactor(programs): simplify program switcher navigation
+fix(programs): make program navigation compact and minimal
 
-- replace oversized program cards with a compact three-tab switcher
-- remove helper text, icons, subtitles, arrows and decorative chrome
-- keep the current program clearly highlighted with aria-current
-- preserve quick one-click navigation between all program pages
-- keep mobile behavior compact and horizontally scrollable when needed
-- remove the now-unnecessary program switcher JavaScript
+- replace the oversized program switcher styling with a compact segmented navigation
+- keep only the three program names with no helper text, icons, arrows or subtitles
+- use a subtle active state instead of large cards
+- keep navigation small on desktop and mobile
+- use a new stylesheet filename to avoid stale GitHub Pages/browser cache
+- preserve aria-current and one-click switching between program pages

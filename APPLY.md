@@ -1,16 +1,13 @@
-# Apply this update
+# Apply
 
-Extract the archive over the repository root and replace existing files.
+Extract this archive over the repository root and replace the three files in `programs/`.
 
-Then remove the path listed in `DELETE_FILES.txt`:
+Add:
 
 ```text
-program-switcher.js
+program-nav.css
 ```
 
-Recommended checks:
+Then remove the paths listed in `DELETE_FILES.txt` if they still exist.
 
-```bash
-npm run validate
-npm test
-```
+This update intentionally uses a new CSS filename so GitHub Pages/browser caches cannot keep serving the previous oversized switcher design.

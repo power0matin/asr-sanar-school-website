@@ -1,17 +1,19 @@
-# Test Report — Simplified Program Switcher
+# Test Report — Compact Program Navigation
 
-## PASS
+## Result
 
-- `network.html`, `accounting.html`, and `electronics.html` parse successfully.
-- Each program page contains exactly one compact `.program-switcher`.
-- Each switcher contains exactly three program links.
-- Each page has exactly one `aria-current="page"` active tab pointing to itself.
-- Removed helper copy: `بین رشته‌ها جابه‌جا شو`.
-- Removed redundant switcher title, subtitles, icons, arrows, and `رشته آموزشی` kicker.
-- Removed the `program-switcher.js` include; the component is CSS-only.
-- Static site validator passes with the GitHub Pages base path when unchanged binary assets are allowed from the existing repository checkout.
-- Existing metadata, RTL structure, breadcrumbs, footer, and school-data checks remain valid.
+PASS
 
-## Visual intent
+## Checks
 
-The switcher is now a compact segmented navigation control: three text-only tabs, a clear blue active state with a subtle school-gold accent, and horizontal overflow only when a narrow viewport cannot fit all three labels.
+- network.html: 3 tabs, one active tab, compact stylesheet reference — PASS
+- accounting.html: 3 tabs, one active tab, compact stylesheet reference — PASS
+- electronics.html: 3 tabs, one active tab, compact stylesheet reference — PASS
+
+- Compact control height: 38px desktop / 36px mobile — PASS
+- Tab height: 30px desktop / 28px mobile — PASS
+- No large grid/card layout can override the component — PASS
+- No helper text, icons, arrows or subtitles — PASS
+- `aria-current="page"` preserved — PASS
+- CSS parse — PASS
+- New stylesheet filename prevents stale `program-switcher.css` cache — PASS
