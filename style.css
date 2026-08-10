@@ -24,6 +24,81 @@ body {
   transition: background .35s, color .35s;
 }
 
+/* Image fallback for broken/missing images */
+.img-fallback {
+  background: linear-gradient(135deg, var(--primary-soft) 0%, var(--border-soft) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  border-radius: inherit;
+}
+
+.img-fallback svg {
+  opacity: 0.4;
+}
+
+/* Skeleton loading */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--border-soft);
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: skeleton-shimmer 2s infinite ease-in-out;
+}
+
+@keyframes skeleton-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Skeleton variants */
+.skeleton-text {
+  height: 14px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.skeleton-title {
+  height: 24px;
+  width: 60%;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.skeleton-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin: 0 auto 14px;
+}
+
+.skeleton-card {
+  padding: 28px 16px 24px;
+  text-align: center;
+}
+
+/* Image loading state */
+img[data-loading="true"] {
+  opacity: 0;
+}
+
+img[data-loaded="true"] {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
 :root {
 
   --bg: #f0f4f8;
@@ -354,13 +429,14 @@ nav a:hover {
   width: 52px;
   height: 28px;
   border-radius: 50px;
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #93c5fd 50%, #dbeafe 100%);
   border: none;
   cursor: pointer;
   transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0;
   flex-shrink: 0;
   overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .theme-btn::before {

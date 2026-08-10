@@ -8,6 +8,74 @@ const themeBtn = document.getElementById("themeToggle");
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll("#navMenu a");
 const lightbox = document.getElementById("lightbox");
+
+// ========================
+// IMAGE FALLBACK HANDLER
+// ========================
+const fallbackSVG = `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`;
+
+const MIN_LOAD_TIME = 1500; // 1.5s minimum skeleton display
+
+document.querySelectorAll("img").forEach((img) => {
+  if (!img.complete) {
+    const parent = img.parentElement;
+    if (parent) {
+      // Set skeleton dimensions to match image and prevent layout shift
+      const w = img.getAttribute("width") || img.naturalWidth;
+      const h = img.getAttribute("height") || img.naturalHeight;
+      if (w) parent.style.width = (typeof w === "number" ? w + "px" : w);
+      if (h) parent.style.height = (typeof h === "number" ? h + "px" : h);
+      if (img.style.borderRadius) parent.style.borderRadius = img.style.borderRadius;
+
+      parent.classList.add("skeleton");
+      img.setAttribute("data-loading", "true");
+      img.dataset.loadStart = Date.now();
+    }
+  }
+
+  img.addEventListener("load", function () {
+    const elapsed = Date.now() - (parseInt(this.dataset.loadStart) || 0);
+    const remaining = Math.max(0, MIN_LOAD_TIME - elapsed);
+
+    setTimeout(() => {
+      this.removeAttribute("data-loading");
+      this.setAttribute("data-loaded", "true");
+      this.style.opacity = "1";
+      const parent = this.parentElement;
+      if (parent) {
+        parent.classList.remove("skeleton");
+        parent.style.width = "";
+        parent.style.height = "";
+      }
+    }, remaining);
+  });
+
+  img.addEventListener("error", function () {
+    this.style.display = "none";
+    const wrapper = document.createElement("div");
+    wrapper.className = "img-fallback";
+    wrapper.innerHTML = fallbackSVG;
+    if (this.width) wrapper.style.width = this.width + "px";
+    if (this.height) wrapper.style.height = this.height + "px";
+    if (this.getAttribute("width")) wrapper.style.width = this.getAttribute("width");
+    if (this.getAttribute("height")) wrapper.style.height = this.getAttribute("height");
+    const radius = getComputedStyle(this).borderRadius;
+    if (radius && radius !== "0px") wrapper.style.borderRadius = radius;
+    this.parentNode.insertBefore(wrapper, this);
+    const parent = this.parentElement;
+    if (parent && parent.classList.contains("skeleton")) {
+      parent.classList.remove("skeleton");
+      parent.style.width = "";
+      parent.style.height = "";
+    }
+  });
+
+  if (img.complete && img.naturalWidth === 0) {
+    img.dispatchEvent(new Event("error"));
+  } else if (img.complete) {
+    img.dispatchEvent(new Event("load"));
+  }
+});
 const lightImg = document.getElementById("lightboxImg");
 const form = document.getElementById("contactForm");
 const counters = document.querySelectorAll(".stat h3");
