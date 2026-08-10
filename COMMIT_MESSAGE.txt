@@ -1,11 +1,9 @@
-feat: harden Asr Sanat school website for production
+fix(ci): validate GitHub Pages base paths and modernize Actions
 
-- replace placeholder and unverified school content with defensible public information
-- remove fake-success contact form and stale news/staff/testimonial content
-- rebuild responsive hero, program pages, gallery and accessible lightbox
-- add keyboard, swipe, reduced-motion and persistent theme support
-- fix canonical URLs, social metadata, JSON-LD, sitemap, robots and manifest
-- add school data provenance and synchronized English/Persian documentation
-- add portable screenshot tooling, static validation and Chromium smoke tests
-- add GitHub Actions CI, explicit license and stale-file cleanup manifest
-- generate new desktop/mobile screenshots for light and dark themes
+- make static validation aware of the GitHub Pages project base path
+- validate custom 404 assets and project-root navigation correctly
+- simulate project-path deployment and nested 404s in browser smoke tests
+- add explicit SITE_BASE_PATH configuration to CI
+- upgrade checkout and setup-node actions to v6
+- run CI with Node.js 24 to remove deprecated action runtime warnings
+- retain desktop, mobile, theme, FAQ, lightbox, program and overflow smoke coverage
