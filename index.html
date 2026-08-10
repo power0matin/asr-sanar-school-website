@@ -1,832 +1,261 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>هنرستان عصر صنعت | آموزش رشته‌های فنی حرفه‌ای در فردیس</title>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>هنرستان عصر صنعت فردیس | رشته‌های فنی‌وحرفه‌ای</title>
+  <meta name="description" content="معرفی هنرستان پسرانه عصر صنعت در فردیس و رشته‌های شبکه و نرم‌افزار رایانه، حسابداری و الکتروتکنیک. اطلاعات تماس و مسیرهای آموزشی.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Asr Sanat Technical School Website Project">
+  <meta name="theme-color" content="#173c8f">
+  <link rel="canonical" href="https://power0matin.github.io/asr-sanar-school-website/">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preload" href="assets/fonts/vazirmatn/Vazirmatn[wght].woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
 
-  <!-- فونت داخلی -->
-  <link rel="preload" href="assets/fonts/vazirmatn/Vazirmatn[wght].woff2" as="font" type="font/woff2" crossorigin>
-
-  <!-- Performance hints -->
-  <link rel="preconnect" href="https://balad.ir" crossorigin>
-
-  <meta name="description"
-    content="هنرستان عصر صنعت فردیس - آموزش رشته‌های فنی حرفه‌ای شامل شبکه و نرم افزار، حسابداری و برق الکترونیک. ثبت نام دانش‌آموزان پایه نهم.">
-  <meta name="keywords" content="هنرستان, هنرستان فنی حرفه ای, شبکه و نرم افزار, حسابداری, برق, فردیس, البرز, ثبت نام">
-  <meta name="author" content="هنرستان عصر صنعت">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="fa">
-  <meta name="geo.region" content="IR-06">
-  <meta name="geo.placename" content="فردیس">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="هنرستان عصر صنعت | آموزش فنی حرفه‌ای">
-  <meta property="og:description" content="آموزش تخصصی رشته‌های فنی حرفه‌ای در فردیس، البرز">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/images/cover.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
   <meta property="og:locale" content="fa_IR">
   <meta property="og:site_name" content="هنرستان عصر صنعت">
+  <meta property="og:title" content="هنرستان عصر صنعت فردیس">
+  <meta property="og:description" content="معرفی رشته‌های فنی‌وحرفه‌ای هنرستان عصر صنعت در فردیس، البرز.">
+  <meta property="og:url" content="https://power0matin.github.io/asr-sanar-school-website/">
+  <meta property="og:image" content="https://power0matin.github.io/asr-sanar-school-website/assets/images/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="هنرستان عصر صنعت فردیس">
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="هنرستان عصر صنعت">
-  <meta name="twitter:description" content="آموزش رشته‌های فنی حرفه‌ای در فردیس">
-
-  <link rel="canonical" href="https://example.com">
-
-  <meta name="theme-color" content="#1e40af">
+  <meta name="twitter:title" content="هنرستان عصر صنعت فردیس">
+  <meta name="twitter:description" content="رشته‌های شبکه و نرم‌افزار رایانه، حسابداری و الکتروتکنیک در فردیس.">
+  <meta name="twitter:image" content="https://power0matin.github.io/asr-sanar-school-website/assets/images/og-cover.png">
 
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "name": "هنرستان عصر صنعت",
-  "alternateName": "هنرستان فنی حرفه‌ای عصر صنعت",
-  "url": "https://example.com",
-  "logo": "honarestan-asr-sanaat.png",
-  "description": "آموزش رشته‌های فنی حرفه‌ای شامل شبکه و نرم افزار، حسابداری و برق الکترونیک",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "بین کانال و فلکه سوم",
-    "addressLocality": "فردیس",
-    "addressRegion": "البرز",
-    "addressCountry": "IR"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "35.7092",
-    "longitude": "51.0576"
-  },
-  "telephone": "026-000000",
-  "email": "info@school.ir",
-  "openingHours": "Mo-Th 08:00-16:00",
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "رشته‌های آموزشی",
-    "itemListElement": [
-      {"@type": "Offer", "itemOffered": {"@type": "EducationalOccupationalProgram", "name": "شبکه و نرم افزار"}},
-      {"@type": "Offer", "itemOffered": {"@type": "EducationalOccupationalProgram", "name": "حسابداری"}},
-      {"@type": "Offer", "itemOffered": {"@type": "EducationalOccupationalProgram", "name": "برق و الکترونیک"}}
-    ]
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "هنرستان پسرانه عصر صنعت",
+    "alternateName": "هنرستان فنی‌وحرفه‌ای عصر صنعت",
+    "url": "https://power0matin.github.io/asr-sanar-school-website/",
+    "telephone": "+982636508764",
+    "description": "هنرستان فنی‌وحرفه‌ای پسرانه غیردولتی در فردیس با رشته‌های شبکه و نرم‌افزار رایانه، حسابداری و الکتروتکنیک.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "فردیس",
+      "addressRegion": "البرز",
+      "addressCountry": "IR"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "رشته‌های آموزشی",
+      "itemListElement": [
+        {"@type":"Offer","itemOffered":{"@type":"EducationalOccupationalProgram","name":"شبکه و نرم‌افزار رایانه"}},
+        {"@type":"Offer","itemOffered":{"@type":"EducationalOccupationalProgram","name":"حسابداری"}},
+        {"@type":"Offer","itemOffered":{"@type":"EducationalOccupationalProgram","name":"الکتروتکنیک"}}
+      ]
+    }
   }
-}
-</script>
-
+  </script>
 </head>
-
-
 <body>
-  <!-- Scroll Progress Bar -->
-  <div id="scrollProgress"></div>
-  <header class="header">
-
-    <div class="container nav">
-
-      <div class="logo">
-        هنرستان عصر صنعت
-      </div>
-
-      <nav id="navMenu" aria-label="منوی اصلی سایت">
-        <a href="#top">صفحه اصلی</a>
-        <a href="#about">درباره هنرستان</a>
-        <a href="#programs">رشته‌های آموزشی</a>
-        <a href="#features">امکانات</a>
-        <a href="#staff">کادر آموزشی</a>
-        <a href="#gallery">گالری تصاویر</a>
-        <a href="#news">اخبار</a>
-        <a href="#contact">تماس با ما</a>
-      </nav>
-
-
-      <div class="nav-actions">
-
-        <button id="themeToggle" class="theme-btn" aria-label="تغییر تم">
-          <svg class="theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <svg class="theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        </button>
-
-        <button class="hamburger" id="menuToggle" aria-label="باز کردن منو" aria-controls="navMenu"
-          aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-      </div>
-
-    </div>
-
-  </header>
-
-  <main>
-
-    <section id="top" class="hero">
-
-      <div class="hero-bg"></div>
-      <div class="hero-glow"></div>
-      <div class="hero-glow-center"></div>
-      <div class="hero-grid"></div>
-      <div class="hero-rays"></div>
-      <div class="hero-vignette"></div>
-      <div class="hero-particles">
-        <div class="hero-particle"></div>
-        <div class="hero-particle"></div>
-        <div class="hero-particle"></div>
-        <div class="hero-particle"></div>
-        <div class="hero-particle"></div>
-        <div class="hero-particle"></div>
-        <div class="hero-particle"></div>
-        <div class="hero-particle"></div>
-      </div>
-
-      <div class="container hero-wrapper">
-
-        <div class="hero-text">
-
-          <h1>
-            هنرستان
-            <span class="highlight">فنی غیردولتی عصر صنعت</span>
-          </h1>
-
-          <p class="hero-desc">
-            آموزش مهارت‌های فنی و آماده‌سازی دانش‌آموزان برای ورود به بازار کار و ادامه تحصیل در رشته‌های تخصصی
-          </p>
-
-          <p class="hero-location">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            فردیس، البرز
-          </p>
-
-          <div class="hero-buttons">
-            <button class="primary-btn" onclick="scrollToSection('programs')">
-              مشاهده رشته‌ها
-            </button>
-            <a href="#contact" class="outline">
-              ثبت نام دانش‌آموز
-            </a>
-          </div>
-
-          <div class="hero-stats">
-            <div class="stat">
-              <h3>+۳۰۰</h3>
-              <p>دانش‌آموز</p>
-            </div>
-            <div class="stat">
-              <h3>+۲۵</h3>
-              <p>معلم</p>
-            </div>
-            <div class="stat">
-              <h3>۳</h3>
-              <p>رشته تخصصی</p>
-            </div>
-          </div>
-
-          <div class="hero-badges">
-            <span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              دارای مجوز آموزش و پرورش
-            </span>
-            <span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              بیش از ۱۰ سال سابقه
-            </span>
-            <span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-              قبولی در دانشگاه‌های برتر
-            </span>
-
-          </div>
-
-        </div>
-
-        <div class="hero-image">
-
-          <div class="hero-img-box">
-            <img src="honarestan-asr-sanaat.png" alt="هنرستان عصر صنعت">
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-
-    <section class="about container reveal" id="about">
-
-      <h2>درباره هنرستان</h2>
-
-      <div class="about-wrapper">
-
-        <div class="about-image">
-          <img src="assets/images/school.webp" loading="lazy" alt="هنرستان عصر صنعت">
-        </div>
-
-        <div class="about-grid">
-
-          <div class="about-card">
-            <h3>تاریخچه</h3>
-            <p>
-              مدرسه آینده سازان با هدف ارائه آموزش با کیفیت و تربیت نسل آینده تأسیس شده است.
-            </p>
-          </div>
-
-          <div class="about-card">
-            <h3>اهداف آموزشی</h3>
-            <p>
-              پرورش خلاقیت، مهارت حل مسئله و آماده سازی دانش‌آموزان برای آینده.
-            </p>
-          </div>
-
-          <div class="about-card">
-            <h3>ارزش‌های مدرسه</h3>
-            <p>
-              مسئولیت‌پذیری، احترام، همکاری و تلاش برای پیشرفت.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <section class="programs container reveal" id="programs">
-
-      <h2>رشته‌های هنرستان</h2>
-
-      <div class="program-grid">
-
-        <!-- Network -->
-
-        <div class="card program-card">
-
-          <div class="icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-
-          <h3>شبکه و نرم‌افزار</h3>
-
-          <p>
-            آموزش برنامه‌نویسی، شبکه‌های کامپیوتری، توسعه نرم‌افزار و مهارت‌های IT
-          </p>
-
-          <a href="programs/network.html" class="program-btn">
-            مشاهده جزئیات رشته
-          </a>
-
-        </div>
-
-
-        <!-- Accounting -->
-
-        <div class="card program-card">
-
-          <div class="icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8" y2="10.01"/><line x1="12" y1="10" x2="12" y2="10.01"/><line x1="16" y1="10" x2="16" y2="10.01"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="16" y1="14" x2="16" y2="14.01"/><line x1="8" y1="18" x2="8" y2="18.01"/><line x1="12" y1="18" x2="12" y2="18.01"/><line x1="16" y1="18" x2="16" y2="18.01"/></svg>
-          </div>
-
-          <h3>حسابداری</h3>
-
-          <p>
-            آموزش اصول حسابداری، مدیریت مالی و نرم‌افزارهای حسابداری
-          </p>
-
-          <a href="programs/accounting.html" class="program-btn">
-            مشاهده جزئیات رشته
-          </a>
-
-        </div>
-
-
-        <!-- Electrical -->
-
-        <div class="card program-card">
-
-          <div class="icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-
-          <h3>برق و الکترونیک</h3>
-
-          <p>
-            آموزش مدارهای الکترونیکی، سیستم‌های برق صنعتی و مهارت‌های فنی
-          </p>
-
-          <a href="programs/electronics.html" class="program-btn">
-            مشاهده جزئیات رشته
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <section class="features container reveal" id="features">
-
-      <h2>امکانات هنرستان</h2>
-
-      <div class="features-grid">
-
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v11l-3 3-3-3z"/><path d="M6 21h12"/><path d="M9 3H6a2 2 0 0 0-2 2v2"/><path d="M15 3h3a2 2 0 0 1 2 2v2"/></svg>
-          </div>
-          <h3>کارگاه‌های تخصصی</h3>
-          <p>کارگاه‌های مجهز برای آموزش عملی رشته‌های فنی حرفه‌ای</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <h3>آزمایشگاه کامپیوتر</h3>
-          <p>سیستم‌های مدرن برای آموزش برنامه‌نویسی و شبکه</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </div>
-          <h3>کتابخانه آموزشی</h3>
-          <p>منابع علمی و کمک آموزشی برای دانش‌آموزان</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-          </div>
-          <h3>فعالیت‌های علمی</h3>
-          <p>مسابقات علمی و پروژه‌های پژوهشی دانش‌آموزی</p>
-        </div>
-
-      </div>
-
-    </section>
-
-    <section class="advantages container reveal">
-
-      <h2>چرا عصر صنعت؟</h2>
-
-      <div class="advantages-grid">
-
-        <div class="adv">
-          <div class="adv-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-          </div>
-          <h3>آموزش عملی</h3>
-          <p>بیش از ۶۰٪ آموزش‌ها به صورت عملی در کارگاه‌ها انجام می‌شود.</p>
-        </div>
-
-        <div class="adv">
-          <div class="adv-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          </div>
-          <h3>آماده‌سازی برای بازار کار</h3>
-          <p>دانش‌آموزان مهارت‌های واقعی برای ورود به بازار کار یاد می‌گیرند.</p>
-        </div>
-
-        <div class="adv">
-          <div class="adv-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </div>
-          <h3>محیط آموزشی مدرن</h3>
-          <p>کارگاه‌ها و تجهیزات مطابق استانداردهای روز.</p>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- Staff Section -->
-    <section class="staff-section container reveal" id="staff">
-      <h2>کادر آموزشی و اساتید</h2>
-
-      <div class="staff-filters">
-        <button class="staff-filter active" data-filter="all"><span>همه</span></button>
-        <button class="staff-filter" data-filter="engineering"><span>مهندسی</span></button>
-        <button class="staff-filter" data-filter="arts"><span>هنر و معماری</span></button>
-        <button class="staff-filter" data-filter="management"><span>مدیریت</span></button>
-      </div>
-
-      <div class="staff-grid" id="staffGrid">
-        <div class="staff-card" data-category="engineering">
-          <img src="assets\images\staff\1774353772892.jpg" alt="مهندس متین شاه‌آبادی" loading="lazy">
-          <h3>مهندس متین شاه‌آبادی</h3>
-          <p>توسعه‌دهنده ارشد وب</p>
-        </div>
-        <div class="staff-card" data-category="arts">
-          <img src="assets\images\staff\1774353772892.jpg" alt="مهندس متین شاه‌آبادی" loading="lazy">
-          <h3>مهندس متین شاه‌آبادی</h3>
-          <p>طراح گرافیک</p>
-        </div>
-        <div class="staff-card" data-category="management">
-          <img src="assets\images\staff\1774353772892.jpg" alt="مهندس متین شاه‌آبادی" loading="lazy">
-          <h3>مهندس متین شاه‌آبادی</h3>
-          <p>مدیر آموزشی</p>
-        </div>
-        <div class="staff-card" data-category="engineering">
-          <img src="assets\images\staff\1774353772892.jpg" alt="مهندس متین شاه‌آبادی" loading="lazy">
-          <h3>مهندس متین شاه‌آبادی</h3>
-          <p>مدرس شبکه</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- گالری تصاویر -->
-    <section class="gallery container reveal" id="gallery">
-      <h2>گالری تصاویر</h2>
-      <div class="gallery-slider">
-        <button class="gallery-arrow gallery-prev" id="galleryPrev" aria-label="تصویر قبلی">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-        <div class="gallery-track" id="galleryTrack" role="region" aria-label="گالری تصاویر">
-          <div class="gallery-slide" data-index="0">
-            <img src="assets/images/gallery/-2147483648_-210527.jpg" alt="تصویر گالری ۱" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-zoom-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
-          </div>
-          <div class="gallery-slide" data-index="1">
-            <img src="assets/images/gallery/-2147483648_-210529.jpg" alt="تصویر گالری ۲" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-zoom-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
-          </div>
-          <div class="gallery-slide" data-index="2">
-            <img src="assets/images/gallery/-2147483648_-210533.jpg" alt="تصویر گالری ۳" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-zoom-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
-          </div>
-          <div class="gallery-slide" data-index="3">
-            <img src="assets/images/gallery/-2147483648_-212067.jpg" alt="تصویر گالری ۴" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-zoom-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
-          </div>
-          <div class="gallery-slide" data-index="4">
-            <img src="assets/images/gallery/-2147483648_-212070.jpg" alt="تصویر گالری ۵" loading="lazy">
-            <div class="gallery-overlay"><span class="gallery-zoom-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
-          </div>
-        </div>
-        <button class="gallery-arrow gallery-next" id="galleryNext" aria-label="تصویر بعدی">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <div class="gallery-dots" id="galleryDots"></div>
-      </div>
-    </section>
-
-    <section class="testimonials container reveal">
-
-      <h2>نظر دانش‌آموزان و والدین</h2>
-
-      <div class="testimonial-wrapper">
-
-        <div class="testimonial-card">
-
-          <p>
-            "در رشته شبکه مهارت‌های واقعی یاد گرفتم و الان در شرکت IT مشغول کارآموزی هستم."
-          </p>
-
-          <div class="testimonial-user">
-            <img src="assets/images/students/student1.jpg" loading="lazy" alt="دانش آموز">
-            <div>
-              <h4>علی رضایی</h4>
-              <span>دانش‌آموز شبکه</span>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="testimonial-card">
-
-          <p>
-            "محیط هنرستان بسیار منظم است و معلمان واقعاً به پیشرفت دانش‌آموزان اهمیت می‌دهند."
-          </p>
-
-          <div class="testimonial-user">
-            <img src="assets/images/students/student2.jpg" loading="lazy" alt="مادر محمد احمدی">
-            <div>
-              <h4>مادر محمد احمدی</h4>
-              <span>ولی دانش‌آموز</span>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="testimonial-card">
-
-          <p>
-            "کارگاه‌های برق بسیار مجهز هستند و آموزش‌ها کاملاً عملی انجام می‌شود."
-          </p>
-
-          <div class="testimonial-user">
-            <img src="assets/images/students/student3.jpg" loading="lazy" alt="امیر حسینی دانش‌آموز برق">
-            <div>
-              <h4>امیر حسینی</h4><span>دانش‌آموز برق</span>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <section class="steps container reveal">
-
-      <h2>مراحل ثبت نام</h2>
-
-      <div class="steps-grid">
-
-        <div class="step">
-          <span>1</span>
-          <p>تکمیل فرم ثبت نام</p>
-        </div>
-
-        <div class="step">
-          <span>2</span>
-          <p>بررسی مدارک</p>
-        </div>
-
-        <div class="step">
-          <span>3</span>
-          <p>مصاحبه و ثبت نهایی</p>
-        </div>
-
-      </div>
-
-    </section>
-
-    <section class="faq container reveal">
-
-      <h2>سوالات متداول</h2>
-
-      <div class="faq-item">
-
-        <button class="faq-question" aria-expanded="false" aria-controls="faq1">
-          شرایط ثبت نام در هنرستان چیست؟
-        </button>
-
-        <div class="faq-answer" id="faq1">
-          <p>
-            دانش‌آموزان پایه نهم می‌توانند با ارائه مدارک تحصیلی و شرکت در جلسه مشاوره ثبت نام کنند.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="faq-item">
-
-        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
-          آیا آموزش‌ها عملی هستند؟
-        </button>
-
-        <div class="faq-answer" id="faq2">
-          <p>
-            بله بیش از 60٪ آموزش‌ها در کارگاه‌های عملی و آزمایشگاه انجام می‌شود.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="faq-item">
-
-        <button class="faq-question" aria-expanded="false" aria-controls="faq3">
-          چه رشته‌هایی در هنرستان ارائه می‌شود؟
-        </button>
-
-        <div class="faq-answer" id="faq3">
-          <p>
-            رشته‌های شبکه و نرم افزار، حسابداری و برق الکترونیک ارائه می‌شود.
-          </p>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section class="news container reveal" id="news">
-
-      <h2>اخبار و اطلاعیه‌ها</h2>
-
-      <div class="news-grid">
-
-        <div class="news-card">
-          <h4>برگزاری جشن علمی</h4>
-          <p>دانش‌آموزان در جشنواره علمی مدرسه شرکت کردند.</p>
-          <button class="btn">مشاهده بیشتر</button>
-        </div>
-
-        <div class="news-card">
-          <h4>مسابقات ورزشی</h4>
-          <p>مسابقات فوتبال بین کلاس‌ها برگزار شد.</p>
-          <button class="btn">مشاهده بیشتر</button>
-        </div>
-
-      </div>
-
-    </section>
-
-    <section class="cta container reveal">
-
-      <h2>آینده خود را از امروز بسازید</h2>
-
-      <p>
-        برای ثبت نام در رشته‌های فنی هنرستان عصر صنعت همین حالا اقدام کنید.
-      </p>
-
-      <a href="#contact" class="btn">
-        ثبت نام دانش‌آموز
+  <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="صفحه اصلی هنرستان عصر صنعت">
+        <span class="brand-mark" aria-hidden="true">ع</span>
+        <span class="brand-copy"><strong>عصر صنعت</strong><small>هنرستان فنی‌وحرفه‌ای</small></span>
       </a>
 
-    </section>
+      <nav class="site-nav" id="siteNav" aria-label="منوی اصلی">
+        <a href="#about">درباره هنرستان</a>
+        <a href="#programs">رشته‌ها</a>
+        <a href="#gallery">گالری</a>
+        <a href="#faq">پرسش‌های متداول</a>
+        <a href="#contact">تماس</a>
+      </nav>
 
-    <section class="contact container reveal" id="contact">
-
-      <h2>تماس با ما</h2>
-
-      <div class="contact-wrapper">
-
-        <div class="contact-info">
-
-          <div class="contact-card">
-            <span class="contact-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </span>
-            <div>
-              <h4>آدرس</h4>
-              <p>البرز، فردیس، بین کانال و فلکه سوم</p>
-            </div>
-          </div>
-
-          <div class="contact-card">
-            <span class="contact-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </span>
-            <div>
-              <h4>تلفن</h4>
-              <p>026-000000</p>
-            </div>
-          </div>
-
-          <div class="contact-card">
-            <span class="contact-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </span>
-            <div>
-              <h4>ایمیل</h4>
-              <p>info@school.ir</p>
-            </div>
-          </div>
-
-          <div class="contact-card">
-            <span class="contact-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </span>
-            <div>
-              <h4>ساعات پاسخگویی</h4>
-              <p>شنبه تا چهارشنبه - ۸ تا ۱۶</p>
-            </div>
-          </div>
-
-        </div>
-        <form id="contactForm" method="POST" action="/api/contact">
-
-          <label for="name">نام</label>
-          <input id="name" type="text" placeholder="نام شما" required>
-
-          <label for="email">ایمیل</label>
-          <input id="email" type="email" placeholder="ایمیل" required>
-
-          <label for="message">پیام</label>
-          <textarea id="message" placeholder="پیام شما"></textarea>
-
-          <button type="submit" class="btn">
-            ارسال پیام
-          </button>
-
-        </form>
-
-        <div class="map">
-          <iframe src="https://balad.ir/embed?p=2NgitdCiIJ2hqz" loading="lazy" allowfullscreen
-            sandbox="allow-scripts allow-same-origin">
-          </iframe>
-        </div>
-
-
+      <div class="header-actions">
+        <button class="icon-button theme-toggle" id="themeToggle" type="button" aria-label="فعال کردن حالت تاریک" aria-pressed="false">
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.3 8.3 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg>
+        </button>
+        <button class="icon-button menu-toggle" id="menuToggle" type="button" aria-label="باز کردن منو" aria-controls="siteNav" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
+    </div>
+  </header>
 
+  <main id="main-content">
+    <section class="hero" id="top">
+      <div class="hero-decoration" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">هنرستان فنی‌وحرفه‌ای پسرانه غیردولتی · فردیس</p>
+          <h1>مهارت برای آینده، <span>از عصر صنعت</span></h1>
+          <p class="hero-lead">آشنایی با مسیرهای فنی‌وحرفه‌ای در سه رشته تخصصی و دسترسی سریع به اطلاعات تماس هنرستان عصر صنعت در فردیس.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#programs">آشنایی با رشته‌ها</a>
+            <a class="button button-secondary" href="tel:+982636508764">تماس با هنرستان</a>
+          </div>
+          <p class="hero-note">برای دریافت نشانی به‌روز و هماهنگی مراجعه، پیش از حرکت با هنرستان تماس بگیرید.</p>
+        </div>
+
+        <div class="hero-panel reveal" aria-label="اطلاعات کلیدی هنرستان">
+          <div class="hero-panel-head"><span class="status-dot" aria-hidden="true"></span><span>اطلاعات عمومی هنرستان</span></div>
+          <div class="fact-grid">
+            <article class="fact-card"><strong>۳</strong><span>رشته آموزشی</span></article>
+            <article class="fact-card"><strong>فنی‌وحرفه‌ای</strong><span>شاخه آموزشی</span></article>
+            <article class="fact-card"><strong>پسرانه</strong><span>غیردولتی</span></article>
+            <article class="fact-card"><strong>فردیس</strong><span>استان البرز</span></article>
+          </div>
+          <a class="phone-card" href="tel:+982636508764"><span>تلفن ثابت</span><strong dir="ltr">026-36508764</strong></a>
+        </div>
+      </div>
     </section>
 
-    <!-- <div class="floating-contact">
+    <section class="section container" id="about">
+      <div class="section-heading reveal">
+        <p class="section-kicker">درباره هنرستان</p>
+        <h2>یک مسیر مهارتی در قلب فردیس</h2>
+        <p>هنرستان پسرانه عصر صنعت به‌عنوان یک هنرستان فنی‌وحرفه‌ای غیردولتی در فردیس شناخته می‌شود و سه رشته شبکه و نرم‌افزار رایانه، حسابداری و الکتروتکنیک برای آن در منابع عمومی ثبت شده است.</p>
+      </div>
+      <div class="info-grid">
+        <article class="info-card reveal"><span class="card-number">01</span><h3>آموزش مهارتی</h3><p>تمرکز رشته‌های فنی‌وحرفه‌ای بر پیوند دانش نظری با مهارت‌های کاربردی و آماده‌سازی برای ادامه مسیر آموزشی یا حرفه‌ای است.</p></article>
+        <article class="info-card reveal"><span class="card-number">02</span><h3>سه مسیر تخصصی</h3><p>هنرجویان می‌توانند بر اساس علاقه و هدایت تحصیلی، درباره رشته‌های شبکه و نرم‌افزار، حسابداری یا الکتروتکنیک اطلاعات بیشتری دریافت کنند.</p></article>
+        <article class="info-card reveal"><span class="card-number">03</span><h3>اطلاعات قبل از مراجعه</h3><p>به‌دلیل تفاوت نشانی ثبت‌شده در فهرست‌های عمومی، برای دریافت آدرس دقیق و شرایط ثبت‌نام بهتر است ابتدا تلفنی هماهنگ شود.</p></article>
+      </div>
+    </section>
 
-    <a href="tel:026000000">📞</a>
+    <section class="section section-soft" id="programs">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="section-kicker">رشته‌های آموزشی</p>
+          <h2>سه مسیر برای ساختن مهارت تخصصی</h2>
+          <p>هر صفحه رشته، یک معرفی روشن از حوزه‌های یادگیری، مسیرهای ادامه تحصیل و نمونه مهارت‌های مرتبط ارائه می‌دهد.</p>
+        </div>
+        <div class="program-grid">
+          <article class="program-card reveal">
+            <div class="program-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
+            <h3>شبکه و نرم‌افزار رایانه</h3>
+            <p>آشنایی با برنامه‌نویسی، طراحی و توسعه وب، شبکه‌های رایانه‌ای و مبانی پشتیبانی سیستم‌ها.</p>
+            <a class="text-link" href="programs/network.html">مشاهده جزئیات رشته <span aria-hidden="true">←</span></a>
+          </article>
+          <article class="program-card reveal">
+            <div class="program-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M14 11h2M8 15h2M14 15h2"/></svg></div>
+            <h3>حسابداری</h3>
+            <p>آشنایی با اسناد و عملیات مالی، اصول حسابداری، گزارش‌های مالی و نرم‌افزارهای کاربردی این حوزه.</p>
+            <a class="text-link" href="programs/accounting.html">مشاهده جزئیات رشته <span aria-hidden="true">←</span></a>
+          </article>
+          <article class="program-card reveal">
+            <div class="program-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 10-12h-7l0-8Z"/></svg></div>
+            <h3>الکتروتکنیک</h3>
+            <p>آشنایی با مدارهای الکتریکی، برق ساختمان و صنعت، اندازه‌گیری و اصول ایمنی در کارهای الکتریکی.</p>
+            <a class="text-link" href="programs/electronics.html">مشاهده جزئیات رشته <span aria-hidden="true">←</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <a href="#">💬</a>
+    <section class="section container" aria-labelledby="path-title">
+      <div class="section-heading reveal">
+        <p class="section-kicker">مسیر فنی‌وحرفه‌ای</p>
+        <h2 id="path-title">چرا آموزش مهارتی اهمیت دارد؟</h2>
+      </div>
+      <div class="path-grid">
+        <article class="path-card reveal"><div class="path-icon" aria-hidden="true">01</div><h3>یادگیری با تمرکز بر مهارت</h3><p>رشته‌های فنی‌وحرفه‌ای برای آشنایی هنرجو با دانش تخصصی و کاربرد آن در موقعیت‌های عملی طراحی شده‌اند.</p></article>
+        <article class="path-card reveal"><div class="path-icon" aria-hidden="true">02</div><h3>ادامه تحصیل تخصصی</h3><p>فارغ‌التحصیلان می‌توانند متناسب با رشته و ضوابط آموزشی، مسیر تحصیلی خود را در حوزه‌های مرتبط ادامه دهند.</p></article>
+        <article class="path-card reveal"><div class="path-icon" aria-hidden="true">03</div><h3>آشنایی با فضای حرفه‌ای</h3><p>محتوای مهارتی به هنرجو کمک می‌کند تصویر روشن‌تری از حوزه‌های شغلی و تخصص‌های مرتبط با رشته خود داشته باشد.</p></article>
+      </div>
+    </section>
 
-    <a href="#">✈</a>
+    <section class="section section-dark" id="gallery">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="section-kicker">گالری</p>
+          <h2>تصاویر هنرستان</h2>
+          <p>برای مشاهده تصویر در اندازه بزرگ‌تر، روی هر تصویر کلیک کنید یا با صفحه‌کلید آن را انتخاب کنید.</p>
+        </div>
+        <div class="gallery-shell reveal" data-gallery>
+          <div class="gallery-toolbar">
+            <button class="gallery-control" type="button" data-gallery-prev aria-label="تصویر قبلی">→</button>
+            <button class="gallery-play" type="button" data-gallery-play aria-pressed="false">توقف نمایش خودکار</button>
+            <button class="gallery-control" type="button" data-gallery-next aria-label="تصویر بعدی">←</button>
+          </div>
+          <div class="gallery-viewport" data-gallery-viewport tabindex="0" aria-label="گالری تصاویر هنرستان">
+            <div class="gallery-track" data-gallery-track>
+              <button class="gallery-slide" type="button" data-src="assets/images/gallery/-2147483648_-210527.jpg" aria-label="باز کردن تصویر ۱"><img src="assets/images/gallery/-2147483648_-210527.jpg" alt="تصویر منتشرشده از هنرستان عصر صنعت - ۱" loading="lazy" decoding="async"></button>
+              <button class="gallery-slide" type="button" data-src="assets/images/gallery/-2147483648_-210529.jpg" aria-label="باز کردن تصویر ۲"><img src="assets/images/gallery/-2147483648_-210529.jpg" alt="تصویر منتشرشده از هنرستان عصر صنعت - ۲" loading="lazy" decoding="async"></button>
+              <button class="gallery-slide" type="button" data-src="assets/images/gallery/-2147483648_-210533.jpg" aria-label="باز کردن تصویر ۳"><img src="assets/images/gallery/-2147483648_-210533.jpg" alt="تصویر منتشرشده از هنرستان عصر صنعت - ۳" loading="lazy" decoding="async"></button>
+              <button class="gallery-slide" type="button" data-src="assets/images/gallery/-2147483648_-212067.jpg" aria-label="باز کردن تصویر ۴"><img src="assets/images/gallery/-2147483648_-212067.jpg" alt="تصویر منتشرشده از هنرستان عصر صنعت - ۴" loading="lazy" decoding="async"></button>
+              <button class="gallery-slide" type="button" data-src="assets/images/gallery/gallery-placeholder.svg" aria-label="باز کردن تصویر ۵"><img src="assets/images/gallery/gallery-placeholder.svg" alt="جایگاه تصویر گالری هنرستان عصر صنعت" loading="lazy" decoding="async"></button>
+            </div>
+          </div>
+          <div class="gallery-dots" data-gallery-dots aria-label="انتخاب تصویر"></div>
+        </div>
+      </div>
+    </section>
 
-  </div> -->
+    <section class="section container" id="faq">
+      <div class="section-heading reveal">
+        <p class="section-kicker">پرسش‌های متداول</p>
+        <h2>اطلاعاتی که قبل از تماس به کارتان می‌آید</h2>
+      </div>
+      <div class="faq-list">
+        <article class="faq-item reveal">
+          <h3><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-1">چه رشته‌هایی برای هنرستان عصر صنعت ثبت شده است؟<span aria-hidden="true">+</span></button></h3>
+          <div class="faq-answer" id="faq-answer-1" hidden><p>شبکه و نرم‌افزار رایانه، حسابداری و الکتروتکنیک سه رشته‌ای هستند که در فهرست‌های عمومی برای هنرستان عصر صنعت فردیس ثبت شده‌اند.</p></div>
+        </article>
+        <article class="faq-item reveal">
+          <h3><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2">هنرستان در کدام شهر قرار دارد؟<span aria-hidden="true">+</span></button></h3>
+          <div class="faq-answer" id="faq-answer-2" hidden><p>هنرستان عصر صنعت در فردیس، استان البرز قرار دارد. برای دریافت نشانی دقیق و به‌روز، پیش از مراجعه تلفنی هماهنگ کنید.</p></div>
+        </article>
+        <article class="faq-item reveal">
+          <h3><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3">برای شرایط ثبت‌نام از کجا اطلاعات بگیرم؟<span aria-hidden="true">+</span></button></h3>
+          <div class="faq-answer" id="faq-answer-3" hidden><p>شرایط پذیرش و ثبت‌نام ممکن است بر اساس سال تحصیلی تغییر کند؛ برای اطلاعات قطعی با شماره ثابت هنرستان تماس بگیرید.</p></div>
+        </article>
+      </div>
+    </section>
 
-
+    <section class="section contact-section" id="contact">
+      <div class="container contact-grid">
+        <div class="section-heading reveal">
+          <p class="section-kicker">تماس</p>
+          <h2>قبل از مراجعه، تلفنی هماهنگ کنید</h2>
+          <p>برای شرایط ثبت‌نام، ظرفیت رشته‌ها و دریافت نشانی دقیق و به‌روز، تماس مستقیم مطمئن‌ترین راه است.</p>
+          <a class="button button-primary" href="tel:+982636508764">تماس با 026-36508764</a>
+        </div>
+        <div class="contact-card-large reveal">
+          <dl>
+            <div><dt>نام</dt><dd>هنرستان پسرانه عصر صنعت</dd></div>
+            <div><dt>نوع</dt><dd>فنی‌وحرفه‌ای پسرانه غیردولتی</dd></div>
+            <div><dt>موقعیت</dt><dd>فردیس، استان البرز، ایران</dd></div>
+            <div><dt>تلفن</dt><dd><a dir="ltr" href="tel:+982636508764">026-36508764</a></dd></div>
+          </dl>
+          <p class="contact-disclaimer">این وب‌سایت از درج ایمیل، ساعت کاری و نشانی خیابانیِ تأییدنشده خودداری می‌کند. برای اطلاعات جاری با هنرستان تماس بگیرید.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer">
-
-    <div class="container">
-
-      <div class="footer-grid">
-
-        <div class="footer-brand">
-          <h3>هنرستان عصر صنعت</h3>
-          <p>آموزش تخصصی رشته‌های فنی حرفه‌ای برای آینده‌ای موفق</p>
-          <div class="footer-socials">
-            <a href="#" aria-label="Instagram">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </a>
-            <a href="#" aria-label="Telegram">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            </a>
-            <a href="#" aria-label="WhatsApp">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h4>دسترسی سریع</h4>
-          <a href="#about">درباره ما</a>
-          <a href="#programs">رشته‌ها</a>
-          <a href="#news">اخبار</a>
-          <a href="#contact">تماس با ما</a>
-        </div>
-
-        <div class="footer-col">
-          <h4>رشته‌ها</h4>
-          <a href="#">شبکه و نرم افزار</a>
-          <a href="#">حسابداری</a>
-          <a href="#">برق و الکترونیک</a>
-        </div>
-
-        <div class="footer-col">
-          <h4>تماس با ما</h4>
-          <div class="footer-contact-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>البرز، فردیس</span>
-          </div>
-          <div class="footer-contact-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <span>026-000000</span>
-          </div>
-          <div class="footer-contact-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span>info@school.ir</span>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="footer-bottom">
-        <p>© تمامی حقوق برای هنرستان عصر صنعت محفوظ است</p>
-        <a href="#top" class="back-top">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-          بازگشت به بالا
-        </a>
-      </div>
-
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><a class="brand brand-footer" href="#top"><span class="brand-mark" aria-hidden="true">ع</span><span class="brand-copy"><strong>عصر صنعت</strong><small>فردیس، البرز</small></span></a><p>معرفی ساده و سریع رشته‌های فنی‌وحرفه‌ای هنرستان عصر صنعت.</p></div>
+      <div><h2>دسترسی سریع</h2><a href="#programs">رشته‌ها</a><a href="#gallery">گالری</a><a href="#faq">پرسش‌ها</a></div>
+      <div><h2>تماس</h2><a dir="ltr" href="tel:+982636508764">026-36508764</a><span>فردیس، البرز</span></div>
     </div>
-
+    <div class="container footer-bottom"><span>© هنرستان عصر صنعت</span><a href="#top">بازگشت به بالا ↑</a></div>
   </footer>
 
-
-  <div class="news-modal" id="newsModal" role="dialog" aria-modal="true" aria-labelledby="newsTitle">
-
-    <div class="news-modal-content">
-
-      <span id="closeNews">✕</span>
-
-      <h3 id="newsTitle"></h3>
-
-      <p id="newsText"></p>
-
-    </div>
-
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="نمایش بزرگ تصویر" hidden>
+    <button class="lightbox-close" type="button" data-lightbox-close aria-label="بستن تصویر">×</button>
+    <button class="lightbox-nav lightbox-prev" type="button" data-lightbox-prev aria-label="تصویر قبلی">→</button>
+    <figure><img id="lightboxImage" alt=""><figcaption id="lightboxCaption"></figcaption></figure>
+    <button class="lightbox-nav lightbox-next" type="button" data-lightbox-next aria-label="تصویر بعدی">←</button>
   </div>
-
-  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
-    <img id="lightboxImg" alt="تصویر بزرگ شده">
-  </div>
-
-  <!-- Toast Container -->
-  <div id="toastContainer" aria-live="polite" aria-atomic="true"></div>
-
 
   <script src="script.js" defer></script>
-
 </body>
-
 </html>

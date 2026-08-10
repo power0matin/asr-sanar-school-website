@@ -1,81 +1,66 @@
 # Contributing
 
-Thank you for your interest in contributing to the ASR Sanar School Website.
+Thanks for helping improve the Asr Sanat Technical School website project.
 
-## How to Contribute
+## Before you start
 
-### Reporting Issues
+This repository is publicly visible but is **not open-source licensed**. See [LICENSE](LICENSE). Pull requests and issue reports are welcome, but public access does not grant permission to reuse the design, branding, content, or assets elsewhere.
 
-- Use the [GitHub Issues](https://github.com/power0matin/asr-sanar-school-website/issues) page
-- Include a clear description of the issue
-- Mention your browser and device
-- If possible, include screenshots
+## Reporting a problem
 
-### Suggesting Features
+Open a GitHub issue and include:
 
-- Open an issue with the **feature request** label
-- Describe the feature and its use case
-- Explain why it would benefit the school
+- a clear description
+- steps to reproduce
+- browser and device/viewport
+- expected vs. actual behavior
+- screenshots when useful
 
-### Submitting Changes
+Do not publish private student, parent, or staff information in issues.
 
-1. Fork the repository
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-3. Make your changes
-4. Test on multiple devices and browsers
-5. Commit with a clear message:
-   ```bash
-   git commit -m "Add: description of your change"
-   ```
-6. Push to your fork:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-7. Open a Pull Request
+## Development workflow
 
-## Development Guidelines
-
-### Code Style
-
-- Use semantic HTML5 elements
-- Follow CSS custom property naming conventions
-- Write vanilla JavaScript (ES6+)
-- Keep the site dependency-free
-
-### RTL Support
-
-- All text content should be in Persian (Farsi)
-- Use `dir="rtl"` on HTML elements
-- Test layout in both LTR and RTL modes
-
-### Accessibility
-
-- Add `aria-label` to interactive elements
-- Use `role` attributes where appropriate
-- Ensure keyboard navigation works
-- Maintain color contrast ratios (WCAG 2.1 AA)
-
-### Responsive Design
-
-- Mobile-first approach
-- Use `clamp()` for fluid typography
-- Test on screens from 320px to 1920px+
-
-## Project Structure
-
-```
-index.html          # Main page
-style.css           # All styles
-script.js           # All interactivity
-programs/           # Program detail pages
-assets/
-  fonts/            # Vazirmatn Persian font
-  images/           # School images
+```bash
+git checkout -b fix/short-description
+npm ci
+npx playwright install chromium
+npm run validate
+npm test
 ```
 
-## Questions?
+Then make the change, rerun validation/tests, and open a focused pull request.
 
-Open an issue or contact the school directly at info@school.ir.
+## Content rules
+
+Do not add school-specific claims unless they are current and verifiable. This includes:
+
+- staff names and roles
+- student/teacher counts
+- success or acceptance percentages
+- testimonials
+- exact addresses when sources conflict
+- email addresses or opening hours
+- admissions dates and capacity
+
+Update [`assets/data/school.json`](assets/data/school.json) and [`SOURCES.md`](SOURCES.md) when authoritative school information changes.
+
+## Code guidelines
+
+- Keep the production site framework-free and dependency-free at runtime.
+- Prefer semantic HTML and native browser APIs.
+- Preserve Persian RTL behavior.
+- Keep keyboard interactions and ARIA state synchronized.
+- Respect `prefers-reduced-motion`.
+- Avoid inline styles and inline event handlers.
+- Avoid unnecessary external scripts and trackers.
+- Keep mobile layouts free of horizontal overflow from 320px upward.
+
+## Commit style
+
+Use concise Conventional Commit-style subjects where practical, for example:
+
+```text
+fix: restore lightbox scroll state
+feat: improve program page navigation
+docs: sync Persian and English README files
+```

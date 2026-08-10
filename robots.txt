@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://power0matin.github.io/asr-sanar-school-website/sitemap.xml

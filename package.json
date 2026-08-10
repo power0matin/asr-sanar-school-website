@@ -1,5 +1,14 @@
 {
-  "dependencies": {
-    "playwright": "^1.61.1"
+  "name": "asr-sanat-school-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Development tooling for the Asr Sanat Technical School static website.",
+  "scripts": {
+    "validate": "node scripts/validate.js",
+    "test": "node tests/smoke.js",
+    "screenshots": "node screenshot.js"
+  },
+  "devDependencies": {
+    "playwright": "1.61.1"
   }
 }

@@ -1,0 +1,9 @@
+# Remove these stale/incorrect files when applying this release.
+# They are no longer referenced by the revised website.
+assets/images/cover.jpg
+assets/images/students/student1.jpg
+assets/images/students/student2.jpg
+assets/images/students/student3.jpg
+assets/images/gallery/-2147483648_-212070.jpg
+full-page-screenshot.png
+full-page-screenshot-dark.png

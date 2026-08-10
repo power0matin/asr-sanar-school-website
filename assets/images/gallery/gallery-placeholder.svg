@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 600" role="img" aria-labelledby="title desc">
+  <title id="title">جایگاه تصویر گالری</title>
+  <desc id="desc">پس‌زمینه گرافیکی برای تصویری که هنوز با نسخه نهایی جایگزین نشده است.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0f1a2d"/><stop offset="1" stop-color="#173c8f"/></linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0V36" fill="none" stroke="#fff" stroke-opacity=".04"/></pattern>
+  </defs>
+  <rect width="680" height="600" fill="url(#bg)"/><rect width="680" height="600" fill="url(#grid)"/>
+  <circle cx="520" cy="130" r="150" fill="#60a5fa" fill-opacity=".08"/><circle cx="130" cy="500" r="130" fill="#2563eb" fill-opacity=".08"/>
+  <g fill="none" stroke="#9cc0ff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity=".55"><rect x="270" y="215" width="140" height="120" rx="18"/><circle cx="315" cy="255" r="13"/><path d="m286 318 42-42 31 31 24-24 27 35"/></g>
+</svg>

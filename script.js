@@ -1,575 +1,210 @@
-// ========================
-// GLOBAL UI ELEMENTS (Define once at the top)
-// ========================
-const header = document.querySelector(".header");
-const toggle = document.getElementById("menuToggle");
-const nav = document.getElementById("navMenu");
-const themeBtn = document.getElementById("themeToggle");
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll("#navMenu a");
-const lightbox = document.getElementById("lightbox");
+(() => {
+  "use strict";
 
-// ========================
-// IMAGE FALLBACK HANDLER
-// ========================
-const fallbackSVG = `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`;
+  const root = document.documentElement;
+  const body = document.body;
+  const menuToggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("siteNav");
+  const themeToggle = document.getElementById("themeToggle");
+  const progress = document.getElementById("scrollProgress");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-const MIN_LOAD_TIME = 1500; // 1.5s minimum skeleton display
+  const setTheme = (theme) => {
+    root.dataset.theme = theme;
+    const isDark = theme === "dark";
+    themeToggle?.setAttribute("aria-pressed", String(isDark));
+    themeToggle?.setAttribute("aria-label", isDark ? "فعال کردن حالت روشن" : "فعال کردن حالت تاریک");
+    try { localStorage.setItem("theme", theme); } catch (_) {}
+  };
 
-document.querySelectorAll("img").forEach((img) => {
-  if (!img.complete) {
-    const parent = img.parentElement;
-    if (parent) {
-      // Set skeleton dimensions to match image and prevent layout shift
-      const w = img.getAttribute("width") || img.naturalWidth;
-      const h = img.getAttribute("height") || img.naturalHeight;
-      if (w) parent.style.width = (typeof w === "number" ? w + "px" : w);
-      if (h) parent.style.height = (typeof h === "number" ? h + "px" : h);
-      if (img.style.borderRadius) parent.style.borderRadius = img.style.borderRadius;
+  let savedTheme = null;
+  try { savedTheme = localStorage.getItem("theme"); } catch (_) {}
+  const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  setTheme(savedTheme === "dark" || savedTheme === "light" ? savedTheme : (systemDark ? "dark" : "light"));
 
-      parent.classList.add("skeleton");
-      img.setAttribute("data-loading", "true");
-      img.dataset.loadStart = Date.now();
-    }
-  }
+  themeToggle?.addEventListener("click", () => setTheme(root.dataset.theme === "dark" ? "light" : "dark"));
 
-  img.addEventListener("load", function () {
-    const elapsed = Date.now() - (parseInt(this.dataset.loadStart) || 0);
-    const remaining = Math.max(0, MIN_LOAD_TIME - elapsed);
+  const closeMenu = () => {
+    if (!menuToggle || !nav) return;
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "باز کردن منو");
+    nav.dataset.open = "false";
+  };
 
-    setTimeout(() => {
-      this.removeAttribute("data-loading");
-      this.setAttribute("data-loaded", "true");
-      this.style.opacity = "1";
-      const parent = this.parentElement;
-      if (parent) {
-        parent.classList.remove("skeleton");
-        parent.style.width = "";
-        parent.style.height = "";
-      }
-    }, remaining);
+  menuToggle?.addEventListener("click", () => {
+    const open = menuToggle.getAttribute("aria-expanded") !== "true";
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.setAttribute("aria-label", open ? "بستن منو" : "باز کردن منو");
+    if (nav) nav.dataset.open = String(open);
   });
-
-  img.addEventListener("error", function () {
-    this.style.display = "none";
-    const wrapper = document.createElement("div");
-    wrapper.className = "img-fallback";
-    wrapper.innerHTML = fallbackSVG;
-    if (this.width) wrapper.style.width = this.width + "px";
-    if (this.height) wrapper.style.height = this.height + "px";
-    if (this.getAttribute("width")) wrapper.style.width = this.getAttribute("width");
-    if (this.getAttribute("height")) wrapper.style.height = this.getAttribute("height");
-    const radius = getComputedStyle(this).borderRadius;
-    if (radius && radius !== "0px") wrapper.style.borderRadius = radius;
-    this.parentNode.insertBefore(wrapper, this);
-    const parent = this.parentElement;
-    if (parent && parent.classList.contains("skeleton")) {
-      parent.classList.remove("skeleton");
-      parent.style.width = "";
-      parent.style.height = "";
-    }
+  nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+  document.addEventListener("click", (event) => {
+    if (!nav || !menuToggle || menuToggle.getAttribute("aria-expanded") !== "true") return;
+    if (!nav.contains(event.target) && !menuToggle.contains(event.target)) closeMenu();
   });
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeMenu(); });
 
-  if (img.complete && img.naturalWidth === 0) {
-    img.dispatchEvent(new Event("error"));
-  } else if (img.complete) {
-    img.dispatchEvent(new Event("load"));
-  }
-});
-const lightImg = document.getElementById("lightboxImg");
-const form = document.getElementById("contactForm");
-const counters = document.querySelectorAll(".stat h3");
-const modal = document.getElementById("newsModal");
-const progressBar = document.getElementById("scrollProgress");
-const toastContainer = document.getElementById("toastContainer");
-
-// ========================
-// MOBILE MENU
-// ========================
-if (toggle && nav) {
-  toggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    toggle.classList.toggle("active");
-    nav.classList.toggle("active");
-  });
-
-  // close when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-      nav.classList.remove("active");
-      toggle.classList.remove("active");
-    }
-  });
-
-  // close when link clicked
-  nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("active");
-      toggle.classList.remove("active");
-    });
-  });
-}
-
-// ========================
-// DARK MODE (persistent)
-// ========================
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark");
-}
-
-if (themeBtn) {
-  // مطمئن شوید دکمه وجود دارد
-  themeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    if (document.body.classList.contains("dark")) {
-      localStorage.setItem("theme", "dark");
-    } else {
-      localStorage.setItem("theme", "light");
-    }
-  });
-}
-
-// ========================
-// SCROLL REVEAL
-// ========================
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("active");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.15 },
-);
-
-document.querySelectorAll(".reveal").forEach((el) => {
-  revealObserver.observe(el);
-});
-
-// ========================
-// FORM VALIDATION
-// ========================
-if (form) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const inputs = form.querySelectorAll("input, textarea");
-    let valid = true;
-
-    inputs.forEach((input) => {
-      if (!input.value.trim()) {
-        input.style.borderColor = "red";
-        valid = false;
-      } else {
-        input.style.borderColor = "";
-      }
-    });
-
-    if (!valid) {
-      showToast("لطفاً تمام فیلدها را تکمیل کنید", "error");
-      return;
-    }
-
-    showToast("پیام شما با موفقیت ارسال شد", "success");
-    form.reset();
-  });
-}
-
-// ========================
-// SMOOTH SCROLL (Updated to use the globally defined 'header')
-// ========================
-
-// این تابع را می‌توانید برای لینک‌هایی که به سction خاصی اشاره دارند، استفاده کنید
-function scrollToSection(id) {
-  const element = document.getElementById(id);
-  if (!element) return;
-  const headerOffset = header ? header.offsetHeight + 2 : 80; // استفاده از header تعریف شده
-  const elementPosition = element.getBoundingClientRect().top;
-  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-  window.scrollTo({
-    top: offsetPosition,
-    behavior: "smooth",
-  });
-}
-
-// برای تمام لینک‌های ناوبری که به # شروع می‌شوند
-document.querySelectorAll('#navMenu a[href^="#"]').forEach((link) => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-    const id = link.getAttribute("href").substring(1);
-    const target = document.getElementById(id);
-    if (!target) return;
-
-    const headerOffset = header ? header.offsetHeight + 2 : 80; // استفاده از header تعریف شده
-    const elementPosition =
-      target.getBoundingClientRect().top + window.pageYOffset;
-    const offsetPosition = elementPosition - headerOffset;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
-  });
-});
-
-// ========================
-// COUNTER ANIMATION
-// ========================
-const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
-function toEnglishNum(str) {
-  return str.replace(/[۰-۹]/g, (d) => persianDigits.indexOf(d));
-}
-
-const counterObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-
-      const counter = entry.target;
-      const raw = toEnglishNum(counter.innerText.replace("+", ""));
-      const target = parseInt(raw, 10);
-
-      if (isNaN(target)) { counterObserver.unobserve(counter); return; }
-
-      let count = 0;
-      const duration = 80;
-      const step = target / duration;
-
-      const update = () => {
-        count += step;
-
-        if (count < target) {
-          counter.innerText = "+" + Math.floor(count);
-          requestAnimationFrame(update);
-        } else {
-          counter.innerText = "+" + target;
-        }
-      };
-
-      update();
-      counterObserver.unobserve(counter);
-    });
-  },
-  { threshold: 0.6 },
-);
-
-counters.forEach((counter) => {
-  counterObserver.observe(counter);
-});
-
-if (modal) {
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-}
-
-// ========================
-// LAZY LOADING FALLBACK
-// ========================
-const lazyImages = document.querySelectorAll("img[loading='lazy']");
-
-if ("IntersectionObserver" in window) {
-  const imgObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-
-      const img = entry.target;
-      img.src = img.dataset.src || img.src;
-
-      observer.unobserve(img);
-    });
-  });
-
-  lazyImages.forEach((img) => imgObserver.observe(img));
-}
-
-// script loaded
-
-// FAQ
-document.querySelectorAll(".faq-question").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const item = btn.parentElement;
-    const answer = item.querySelector(".faq-answer");
-
-    const isOpen = item.classList.contains("active");
-
-    document.querySelectorAll(".faq-item").forEach((i) => {
-      i.classList.remove("active");
-      const a = i.querySelector(".faq-answer");
-      if (a) a.style.maxHeight = null;
-    });
-
-    if (!isOpen) {
-      item.classList.add("active");
-      answer.style.maxHeight = answer.scrollHeight + "px";
-    }
-  });
-});
-
-window.addEventListener("scroll", () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-
-  if (progressBar) {
-    progressBar.style.width = progress + "%";
-  }
-
-  // افزودن/حذف کلاس scrolled برای هدر گلس مورفیک
-  if (header) {
-    if (scrollTop > 10) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  }
-});
-
-function showToast(message, type = "info") {
-  if (!toastContainer) return;
-
-  const toast = document.createElement("div");
-  toast.className = `toast toast--${type}`;
-
-  const msgSpan = document.createElement("span");
-  msgSpan.className = "toast__message";
-  msgSpan.textContent = message;
-
-  const closeBtn = document.createElement("button");
-  closeBtn.className = "toast__close";
-  closeBtn.setAttribute("aria-label", "بستن پیام");
-  closeBtn.textContent = "×";
-
-  closeBtn.addEventListener("click", () => {
-    hideToast(toast);
-  });
-
-  toast.appendChild(msgSpan);
-  toast.appendChild(closeBtn);
-
-  toastContainer.appendChild(toast);
-
-  // حذف خودکار بعد از ۳ ثانیه
-  setTimeout(() => {
-    hideToast(toast);
-  }, 3000);
-}
-
-function hideToast(toast) {
-  if (!toast) return;
-  toast.style.animation = "toast-out 0.25s ease-in forwards";
-  toast.addEventListener("animationend", () => {
-    toast.remove();
-  });
-}
-if (lightbox) {
-  lightbox.addEventListener("click", () => {
-    lightbox.style.display = "none";
-  });
-}
-
-// ================= MODERN GALLERY SLIDER =================
-const galleryTrack = document.getElementById("galleryTrack");
-const btnPrev = document.getElementById("galleryPrev");
-const btnNext = document.getElementById("galleryNext");
-const galleryDots = document.getElementById("galleryDots");
-
-if (galleryTrack && btnPrev && btnNext) {
-  const slides = galleryTrack.querySelectorAll(".gallery-slide");
-  const totalSlides = slides.length;
-  let currentIndex = 0;
-  let autoScrollInterval;
-
-  // Create dot indicators
-  if (galleryDots) {
-    slides.forEach((_, i) => {
-      const dot = document.createElement("button");
-      dot.className = "gallery-dot" + (i === 0 ? " active" : "");
-      dot.setAttribute("aria-label", `تصویر ${i + 1}`);
-      dot.addEventListener("click", () => goToSlide(i));
-      galleryDots.appendChild(dot);
-    });
-  }
-
-  function goToSlide(index) {
-    if (index < 0 || index >= totalSlides) return;
-    currentIndex = index;
-
-    const slide = slides[index];
-    const slideWidth = slide.offsetWidth;
-    const trackWidth = galleryTrack.parentElement.offsetWidth;
-    const offset = slide.offsetLeft - (trackWidth - slideWidth) / 2;
-
-    galleryTrack.style.transform = `translateX(${-offset}px)`;
-    updateDots();
-  }
-
-  function updateDots() {
-    if (!galleryDots) return;
-    const dots = galleryDots.querySelectorAll(".gallery-dot");
-    dots.forEach((dot, i) => dot.classList.toggle("active", i === currentIndex));
-  }
-
-  btnNext.addEventListener("click", () => {
-    goToSlide(currentIndex >= totalSlides - 1 ? 0 : currentIndex + 1);
-  });
-
-  btnPrev.addEventListener("click", () => {
-    goToSlide(currentIndex <= 0 ? totalSlides - 1 : currentIndex - 1);
-  });
-
-  // Autoplay
-  function startAutoScroll() {
-    stopAutoScroll();
-    autoScrollInterval = setInterval(() => {
-      goToSlide(currentIndex >= totalSlides - 1 ? 0 : currentIndex + 1);
-    }, 4000);
-  }
-
-  function stopAutoScroll() {
-    clearInterval(autoScrollInterval);
-  }
-
-  startAutoScroll();
-  galleryTrack.parentElement.addEventListener("mouseenter", stopAutoScroll);
-  galleryTrack.parentElement.addEventListener("mouseleave", startAutoScroll);
-  galleryTrack.parentElement.addEventListener("touchstart", stopAutoScroll, { passive: true });
-  galleryTrack.parentElement.addEventListener("touchend", () => setTimeout(startAutoScroll, 3000), { passive: true });
-
-  // Keyboard navigation
-  galleryTrack.setAttribute("tabindex", "0");
-  galleryTrack.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") { e.preventDefault(); goToSlide(currentIndex >= totalSlides - 1 ? 0 : currentIndex + 1); }
-    if (e.key === "ArrowLeft") { e.preventDefault(); goToSlide(currentIndex <= 0 ? totalSlides - 1 : currentIndex - 1); }
-  });
-
-  // Initialize position
-  goToSlide(0);
-}
-
-// ================= MODERN LIGHTBOX FOR GALLERY =================
-(function () {
-  const lightbox = document.getElementById("lightbox");
-  const lightImg = document.getElementById("lightboxImg");
-  if (!lightbox || !lightImg) return;
-
-  const gallerySlides = document.querySelectorAll(".gallery-track .gallery-slide");
-  let lightboxImages = [];
-  let lightboxIndex = 0;
-
-  gallerySlides.forEach((slide) => {
-    const img = slide.querySelector("img");
-    if (img) lightboxImages.push(img.src);
-  });
-
-  // Create lightbox controls
-  const closeBtn = document.createElement("button");
-  closeBtn.className = "lightbox-close";
-  closeBtn.innerHTML = "&#10005;";
-  closeBtn.setAttribute("aria-label", "بستن");
-
-  const prevBtn = document.createElement("button");
-  prevBtn.className = "lightbox-nav";
-  prevBtn.style.right = "24px";
-  prevBtn.innerHTML = "&#10095;";
-  prevBtn.setAttribute("aria-label", "تصویر قبلی");
-
-  const nextBtn = document.createElement("button");
-  nextBtn.className = "lightbox-nav";
-  nextBtn.style.left = "24px";
-  nextBtn.innerHTML = "&#10094;";
-  nextBtn.setAttribute("aria-label", "تصویر بعدی");
-
-  const counter = document.createElement("div");
-  counter.className = "lightbox-counter";
-
-  lightbox.appendChild(closeBtn);
-  lightbox.appendChild(prevBtn);
-  lightbox.appendChild(nextBtn);
-  lightbox.appendChild(counter);
-
-  function openLightbox(index) {
-    lightboxIndex = index;
-    lightImg.src = lightboxImages[index];
-    counter.textContent = `${index + 1} / ${lightboxImages.length}`;
-    lightbox.style.display = "flex";
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeLightbox() {
-    lightbox.style.display = "none";
-    document.body.style.overflow = "";
-  }
-
-  function navigateLightbox(dir) {
-    lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
-    lightImg.src = lightboxImages[lightboxIndex];
-    counter.textContent = `${lightboxIndex + 1} / ${lightboxImages.length}`;
-  }
-
-  gallerySlides.forEach((slide, i) => {
-    slide.addEventListener("click", () => openLightbox(i));
-  });
-
-  closeBtn.addEventListener("click", (e) => { e.stopPropagation(); closeLightbox(); });
-  lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
-  prevBtn.addEventListener("click", (e) => { e.stopPropagation(); navigateLightbox(1); });
-  nextBtn.addEventListener("click", (e) => { e.stopPropagation(); navigateLightbox(-1); });
-
-  document.addEventListener("keydown", (e) => {
-    if (lightbox.style.display !== "flex") return;
-    if (e.key === "Escape") closeLightbox();
-    if (e.key === "ArrowRight") navigateLightbox(1);
-    if (e.key === "ArrowLeft") navigateLightbox(-1);
-  });
-})();
-
-document.addEventListener("DOMContentLoaded", () => {
-  const filterButtons = document.querySelectorAll(".staff-filter");
-  const staffCards = document.querySelectorAll(".staff-card");
-
-  filterButtons.forEach((button) => {
+  document.querySelectorAll(".faq-question").forEach((button) => {
     button.addEventListener("click", () => {
-      filterButtons.forEach((btn) => btn.classList.remove("active"));
-      button.classList.add("active");
-
-      const filterValue = button.getAttribute("data-filter");
-
-      // Phase 1: hide non-matching cards
-      staffCards.forEach((card) => {
-        const category = card.getAttribute("data-category");
-        const shouldShow = filterValue === "all" || category === filterValue;
-
-        if (!shouldShow && !card.classList.contains("hidden")) {
-          card.classList.add("hiding");
-        }
-      });
-
-      // Phase 2: after fade out, swap visibility and stagger entrance
-      setTimeout(() => {
-        let delay = 0;
-
-        staffCards.forEach((card) => {
-          const category = card.getAttribute("data-category");
-          const shouldShow = filterValue === "all" || category === filterValue;
-
-          card.classList.remove("hiding", "showing");
-
-          if (!shouldShow) {
-            card.classList.add("hidden");
-          } else {
-            card.classList.remove("hidden");
-            card.style.animationDelay = delay + "ms";
-            card.classList.add("showing");
-            delay += 50;
-          }
-        });
-      }, 300);
+      const answer = document.getElementById(button.getAttribute("aria-controls"));
+      const open = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", String(!open));
+      if (answer) answer.hidden = open;
     });
   });
-});
+
+  const reveals = [...document.querySelectorAll(".reveal")];
+  if (prefersReducedMotion.matches || !("IntersectionObserver" in window)) {
+    reveals.forEach((el) => el.classList.add("is-visible"));
+  } else {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach((el) => observer.observe(el));
+  }
+
+  const updateProgress = () => {
+    if (!progress) return;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = `${max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0}%`;
+  };
+  updateProgress();
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  window.addEventListener("resize", updateProgress, { passive: true });
+
+  const gallery = document.querySelector("[data-gallery]");
+  if (gallery) {
+    const viewport = gallery.querySelector("[data-gallery-viewport]");
+    const track = gallery.querySelector("[data-gallery-track]");
+    const slides = [...gallery.querySelectorAll(".gallery-slide")];
+    const prev = gallery.querySelector("[data-gallery-prev]");
+    const next = gallery.querySelector("[data-gallery-next]");
+    const play = gallery.querySelector("[data-gallery-play]");
+    const dots = gallery.querySelector("[data-gallery-dots]");
+    let index = 0;
+    let timer = null;
+    let manualPause = false;
+    let pointerStart = null;
+
+    const dotButtons = slides.map((_, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "gallery-dot";
+      dot.setAttribute("aria-label", `رفتن به تصویر ${i + 1}`);
+      dot.addEventListener("click", () => goTo(i, true));
+      dots?.appendChild(dot);
+      return dot;
+    });
+
+    const updateDots = () => dotButtons.forEach((dot, i) => dot.setAttribute("aria-current", i === index ? "true" : "false"));
+    const updatePosition = () => {
+      if (!viewport || !track || !slides.length) return;
+      const slide = slides[index];
+      const viewportWidth = viewport.clientWidth;
+      const offset = slide.offsetLeft - ((viewportWidth - slide.offsetWidth) / 2);
+      track.style.transform = `translate3d(${-offset}px,0,0)`;
+      updateDots();
+    };
+
+    const stopTimer = () => { if (timer) window.clearInterval(timer); timer = null; };
+    const startTimer = () => {
+      stopTimer();
+      if (manualPause || prefersReducedMotion.matches || document.hidden || slides.length < 2) return;
+      timer = window.setInterval(() => goTo(index + 1, false), 5000);
+    };
+    const updatePlay = () => {
+      if (!play) return;
+      play.setAttribute("aria-pressed", String(manualPause));
+      play.textContent = manualPause ? "ادامه نمایش خودکار" : "توقف نمایش خودکار";
+    };
+    const goTo = (target, userInitiated = false) => {
+      index = (target + slides.length) % slides.length;
+      updatePosition();
+      if (userInitiated) startTimer();
+    };
+
+    prev?.addEventListener("click", () => goTo(index - 1, true));
+    next?.addEventListener("click", () => goTo(index + 1, true));
+    play?.addEventListener("click", () => { manualPause = !manualPause; updatePlay(); manualPause ? stopTimer() : startTimer(); });
+    viewport?.addEventListener("mouseenter", stopTimer);
+    viewport?.addEventListener("mouseleave", startTimer);
+    viewport?.addEventListener("focusin", stopTimer);
+    viewport?.addEventListener("focusout", startTimer);
+    viewport?.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") { event.preventDefault(); goTo(index + 1, true); }
+      if (event.key === "ArrowRight") { event.preventDefault(); goTo(index - 1, true); }
+    });
+    viewport?.addEventListener("pointerdown", (event) => { pointerStart = event.clientX; stopTimer(); });
+    viewport?.addEventListener("pointerup", (event) => {
+      if (pointerStart == null) return;
+      const delta = event.clientX - pointerStart;
+      pointerStart = null;
+      if (Math.abs(delta) > 45) goTo(index + (delta < 0 ? 1 : -1), true); else startTimer();
+    });
+    viewport?.addEventListener("pointercancel", () => { pointerStart = null; startTimer(); });
+    document.addEventListener("visibilitychange", () => document.hidden ? stopTimer() : startTimer());
+    prefersReducedMotion.addEventListener?.("change", startTimer);
+    window.addEventListener("resize", updatePosition, { passive: true });
+
+    updatePlay();
+    requestAnimationFrame(() => { updatePosition(); startTimer(); });
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    const close = lightbox?.querySelector("[data-lightbox-close]");
+    const lbPrev = lightbox?.querySelector("[data-lightbox-prev]");
+    const lbNext = lightbox?.querySelector("[data-lightbox-next]");
+    let lastFocused = null;
+
+    const renderLightbox = () => {
+      const slide = slides[index];
+      const img = slide?.querySelector("img");
+      if (!slide || !img || !lightboxImage || !lightboxCaption) return;
+      lightboxImage.src = slide.dataset.src || img.currentSrc || img.src;
+      lightboxImage.alt = img.alt;
+      lightboxCaption.textContent = `${img.alt} — ${index + 1} از ${slides.length}`;
+    };
+    const openLightbox = (slideIndex) => {
+      if (!lightbox) return;
+      index = slideIndex;
+      renderLightbox();
+      lastFocused = document.activeElement;
+      lightbox.hidden = false;
+      body.style.overflow = "hidden";
+      stopTimer();
+      close?.focus();
+    };
+    const closeLightbox = () => {
+      if (!lightbox) return;
+      lightbox.hidden = true;
+      body.style.overflow = "";
+      lastFocused?.focus?.();
+      startTimer();
+    };
+    const moveLightbox = (delta) => { goTo(index + delta, false); renderLightbox(); };
+
+    slides.forEach((slide, i) => slide.addEventListener("click", () => openLightbox(i)));
+    close?.addEventListener("click", closeLightbox);
+    lbPrev?.addEventListener("click", () => moveLightbox(-1));
+    lbNext?.addEventListener("click", () => moveLightbox(1));
+    lightbox?.addEventListener("click", (event) => { if (event.target === lightbox) closeLightbox(); });
+    document.addEventListener("keydown", (event) => {
+      if (!lightbox || lightbox.hidden) return;
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") moveLightbox(1);
+      if (event.key === "ArrowRight") moveLightbox(-1);
+      if (event.key === "Tab") {
+        const focusables = [...lightbox.querySelectorAll("button:not([disabled])")];
+        if (!focusables.length) return;
+        const first = focusables[0], last = focusables[focusables.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    });
+  }
+})();
