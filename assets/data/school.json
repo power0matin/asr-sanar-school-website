@@ -13,5 +13,10 @@
   ],
   "address_status": "Public listings conflict; verify the current street address by phone before publishing.",
   "email_status": "No verified public email found.",
-  "updated": "2026-08-10"
+  "updated": "2026-08-10",
+  "branding": {
+    "logo_asset": "assets/images/school-logo.png",
+    "logo_original": "assets/images/school-logo-original.png",
+    "status": "Official logo supplied directly for this website on 2026-08-10."
+  }
 }

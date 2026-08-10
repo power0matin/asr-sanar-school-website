@@ -4,6 +4,15 @@ Last reviewed: **2026-08-10**
 
 This project intentionally distinguishes public-directory data from directly verified school information.
 
+## Official branding asset
+
+The official Asr Sanat school logo used by this website was supplied directly for the project on **2026-08-10**.
+
+- `assets/images/school-logo-original.png` preserves the uploaded logo unchanged.
+- `assets/images/school-logo.png` only removes excess transparent canvas and keeps the original artwork and aspect ratio.
+- Favicon, app-icon, and Open Graph derivatives are created directly from the same logo.
+- No generated or substitute school logo is used by the production pages.
+
 ## Consistent public data
 
 Multiple public listings identify **هنرستان پسرانه عصر صنعت** in Fardis as a private boys' vocational/technical school and list these programs:

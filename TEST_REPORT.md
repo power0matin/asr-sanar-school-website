@@ -22,6 +22,7 @@ Target: `power0matin/asr-sanar-school-website` (`main` baseline reviewed before 
 | 13 | Synchronize English/Persian docs; add sources, contribution rules, and explicit license | PASS |
 | 14 | Add GitHub Actions validation + browser smoke-test workflow | PASS |
 | 15 | Chromium regression pass and visual review at desktop/mobile in light/dark modes | PASS |
+| 16 | Integrate the official school logo across site identity, favicon/app icons, OG preview, program pages, 404, docs and CI branding checks | PASS |
 
 ## Automated checks executed locally
 
@@ -51,6 +52,10 @@ Target: `power0matin/asr-sanar-school-website` (`main` baseline reviewed before 
 - Program pages: PASS
 - Mobile navigation + overflow: PASS
 - Four responsive screenshots: PASS
+- Official logo integrity (original upload SHA-256 preserved): PASS
+- Official logo in Header / Hero / Footer / program pages / 404: PASS
+- Legacy generated mark and gallery placeholder references removed: PASS
+- Favicon / PWA icons / Open Graph cover derived from the official logo: PASS
 
 ## Environment limitation
 

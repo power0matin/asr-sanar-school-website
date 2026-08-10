@@ -2,6 +2,8 @@
 
 <div align="center">
 
+<img src="assets/images/school-logo.png" alt="Official Asr Sanat Technical School logo" width="190">
+
 ### A lightweight, Persian-first website for Asr Sanat Technical School in Fardis
 
 **Zero runtime dependencies · Responsive · RTL · Accessible · Dark mode · Static hosting**
@@ -23,6 +25,10 @@ This repository contains a static website project for **Asr Sanat Boys Technical
 
 The revised website intentionally avoids unverified claims. Public directory information consistently identifies the school as a private boys' vocational/technical school in Fardis and lists three programs: **Computer Network & Software, Accounting, and Electrotechnics**. A fixed phone number is also publicly listed as `026-36508764`. Street-address listings conflict, so the site asks visitors to confirm the current address by phone before traveling. See [SOURCES.md](SOURCES.md).
 
+## Official Branding
+
+The website uses the official school logo supplied for this project. The untouched upload is retained as `assets/images/school-logo-original.png`; `school-logo.png` only removes excess transparent canvas while preserving the logo itself and its proportions. Favicon, app-icon, and social-preview derivatives are built directly from that same logo—no replacement or generated school mark is used.
+
 ## Screenshots
 
 | Desktop | Mobile |
@@ -34,6 +40,7 @@ Dark-mode captures are also generated as `desktop-dark.png` and `mobile-dark.png
 ## Features
 
 - Persian RTL layout with the local Vazirmatn font
+- **Official Asr Sanat school logo** integrated into the header, hero, footer, program pages, 404 page, favicon, app icons, and social preview
 - Responsive desktop, tablet, and mobile layouts
 - Persistent light/dark theme with system-theme fallback
 - Accessible mobile navigation and keyboard focus states
@@ -104,6 +111,13 @@ Playwright is included only as a **development dependency** for automated browse
 │   ├── fonts/
 │   │   └── vazirmatn/
 │   └── images/
+│       ├── school-logo.png
+│       ├── school-logo-original.png
+│       ├── favicon.ico
+│       ├── apple-touch-icon.png
+│       ├── icon-192.png
+│       ├── icon-512.png
+│       └── og-cover.png
 └── .github/
     └── workflows/
         └── ci.yml

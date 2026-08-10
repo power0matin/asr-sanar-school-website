@@ -7,3 +7,6 @@ assets/images/students/student3.jpg
 assets/images/gallery/-2147483648_-212070.jpg
 full-page-screenshot.png
 full-page-screenshot-dark.png
+assets/images/favicon.svg
+assets/images/gallery/gallery-placeholder.svg
+honarestan-asr-sanaat.png

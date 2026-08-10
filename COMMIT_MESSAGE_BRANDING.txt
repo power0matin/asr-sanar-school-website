@@ -1,0 +1,12 @@
+feat(branding): integrate official Asr Sanat school identity
+
+- replace the generic generated brand mark with the official school logo
+- preserve the original uploaded logo byte-for-byte for provenance
+- add optimized logo usage to header, hero, footer and program pages
+- brand the custom 404 page with the official school identity
+- rebuild favicon, Apple touch icon and PWA icons from the official logo
+- rebuild the Open Graph social preview around the official school logo
+- add structured-data logo metadata and branding source documentation
+- remove the generated gallery placeholder and stale branding assets
+- regenerate light/dark desktop and mobile README screenshots
+- extend static and browser tests with official-branding assertions

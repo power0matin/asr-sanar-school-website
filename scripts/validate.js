@@ -87,7 +87,7 @@ for (const file of htmlFiles) {
 const notFound = read("404.html");
 for (const requiredRef of [
   `${siteBasePath}style.css`,
-  `${siteBasePath}assets/images/favicon.svg`,
+  `${siteBasePath}assets/images/favicon.ico`,
   siteBasePath,
 ]) {
   if (!notFound.includes(requiredRef)) {
@@ -115,6 +115,36 @@ if (!css.includes("prefers-reduced-motion")) fail("style.css: reduced motion han
 if (!script.includes('setAttribute("aria-expanded"')) fail("script.js: dynamic aria-expanded updates missing");
 if (!exists("robots.txt") || !exists("sitemap.xml") || !exists("site.webmanifest")) fail("SEO support files missing");
 
+
+const requiredBrandAssets = [
+  "assets/images/school-logo.png",
+  "assets/images/school-logo-original.png",
+  "assets/images/favicon.ico",
+  "assets/images/favicon-32.png",
+  "assets/images/favicon-16.png",
+  "assets/images/apple-touch-icon.png",
+  "assets/images/icon-192.png",
+  "assets/images/icon-512.png",
+  "assets/images/og-cover.png",
+];
+for (const asset of requiredBrandAssets) {
+  if (!exists(asset)) fail(`Missing official branding asset: ${asset}`);
+}
+
+for (const legacy of ["brand-mark", "assets/images/favicon.svg", "gallery-placeholder.svg"]) {
+  for (const file of htmlFiles) {
+    if (read(file).includes(legacy)) fail(`${file}: legacy/generated branding reference remains: ${legacy}`);
+  }
+}
+
+for (const file of ["index.html", "programs/network.html", "programs/accounting.html", "programs/electronics.html", "404.html"]) {
+  if (!read(file).includes("school-logo.png")) fail(`${file}: official school logo is not integrated`);
+}
+
+if (!index.includes('"logo": "https://power0matin.github.io/asr-sanar-school-website/assets/images/school-logo.png"')) {
+  fail("index.html: structured data does not reference the official school logo");
+}
+
 if (failures.length) {
   console.error(`Validation failed (${failures.length}):`);
   failures.forEach((item) => console.error(`- ${item}`));
@@ -122,5 +152,5 @@ if (failures.length) {
 }
 
 console.log(
-  `Validation passed: ${htmlFiles.length} HTML pages + GitHub Pages base path (${siteBasePath}) + metadata + accessibility + school-data sync.`,
+  `Validation passed: ${htmlFiles.length} HTML pages + GitHub Pages base path (${siteBasePath}) + metadata + accessibility + official branding + school-data sync.`,
 );
