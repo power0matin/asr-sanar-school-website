@@ -117,7 +117,7 @@ const check = (condition, message) => {
     check(notFoundResponse && notFoundResponse.status() === 404, "Custom 404 did not return HTTP 404");
     check(await page.locator(".error-code").textContent() === "404", "Custom 404 content missing");
     check(await page.locator('link[rel="stylesheet"]').getAttribute("href") === `${siteBasePath}style.css`, "404 stylesheet base path is wrong");
-    check(await page.locator('link[rel="icon"]').getAttribute("href") === `${siteBasePath}assets/images/favicon.ico`, "404 favicon base path is wrong");
+    check(await page.locator('link[rel="icon"][href$="favicon.ico"]').getAttribute("href") === `${siteBasePath}assets/images/favicon.ico`, "404 favicon base path is wrong");
     check(await page.locator(`a[href="${siteBasePath}"]`).count() === 1, "404 home link base path is wrong");
     check(
       await page.evaluate((expected) => [...document.styleSheets].some((sheet) => sheet.href && new URL(sheet.href).pathname === expected), `${siteBasePath}style.css`),
